@@ -1,0 +1,19 @@
+# Runtime / logs
+logs/
+*.log
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+
+# Dependencies (future-proofing)
+node_modules/
+vendor/
+
+# Build artifacts (future)
+dist/
+build/
+
+# Allow tracked placeholders
+!.gitkeep
