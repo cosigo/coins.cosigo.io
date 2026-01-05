@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+html,body{
+  margin:0;
+  padding:0;
+  background:#fbfbf9;
+}
+.tradingview-widget-container{
+  border-top:1px solid rgba(180,106,60,.25);
+  border-bottom:1px solid rgba(180,106,60,.25);
+}
+</style>
+</head>
+<body>
+
+<div class="tradingview-widget-container">
+  <div class="tradingview-widget-container__widget"></div>
+</div>
+
+<script src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+{
+  "symbols": [
+    {"proName":"BITSTAMP:BTCUSD","title":"BTC"},
+    {"proName":"BITSTAMP:ETHUSD","title":"ETH"},
+    {"proName":"BINANCE:SOLUSDT","title":"SOL"},
+    {"proName":"BINANCE:ADAUSDT","title":"ADA"},
+    {"proName":"BINANCE:XRPUSDT","title":"XRP"},
+    {"proName":"BINANCE:DOGEUSDT","title":"DOGE"},
+    {"proName":"BINANCE:LTCUSDT","title":"LTC"},
+    {"proName":"BINANCE:LINKUSDT","title":"LINK"},
+    {"proName":"BINANCE:AVAXUSDT","title":"AVAX"},
+    {"proName":"BINANCE:DOTUSDT","title":"DOT"},
+    {"proName":"BINANCE:BNBUSDT","title":"BNB"},
+    {"proName":"BINANCE:TRXUSDT","title":"TRX"}
+  ],
+  "colorTheme":"light",
+  "displayMode":"adaptive",
+  "showSymbolLogo":true
+}
+</script>
+
+</body>
+</html>
