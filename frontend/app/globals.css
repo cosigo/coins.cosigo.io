@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+/* ===== Global Theme ===== */
+
+:root {
+  --bg-main: #0e0f12;       /* deep charcoal */
+  --bg-panel: #151821;     /* card surface */
+  --bg-soft: #1c2230;      /* subtle contrast */
+  --text-main: #e6e9ef;    /* soft white */
+  --text-muted: #9aa3b2;   /* muted silver */
+  --accent-silver: #cfd6e4;
+  --accent-steel: #6b86b6;
+  --accent-gold: #c7a24a;
+  --border-soft: rgba(255,255,255,0.06);
+  --glow: rgba(107, 134, 182, 0.25);
+}
+
+html, body {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  min-height: 100%;
+}
+
+/* Scrollbar styling (premium feel) */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0e0f12;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a3142;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3a4460;
+}
+
+/* Links */
+a {
+  color: var(--accent-silver);
+  text-decoration: none;
+}
+a:hover {
+  color: white;
+}
+
+/* Selection */
+::selection {
+  background: var(--accent-steel);
+  color: #fff;
+}
