@@ -26,8 +26,11 @@ export default function Header() {
 }, [])
 
   return (
-    <header className="bg-[#0b0d12] border-b border-[var(--border-soft)] sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+  <header className="bg-[#0b0d12] border-b border-[var(--border-soft)] sticky top-0 z-50">
+    <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
+      {/* Left Side */}
+      <div className="flex items-center gap-6">
 
         {/* Brand */}
         <Link 
@@ -37,26 +40,36 @@ export default function Header() {
           Cosigo
         </Link>
 
-        {/* Cart */}
-        <Link 
-          href="/cart" 
-          className="relative text-[var(--text-muted)] hover:text-white transition text-lg"
+        {/* Return to Main Site */}
+        <a
+          href="https://cosigo.io"
+          className="text-sm text-[var(--text-muted)] hover:text-white transition"
         >
-          🛒
-          {count > 0 && (
-            <span className="
-              absolute -top-2 -right-2 
-              bg-[var(--accent-steel)] 
-              text-white text-xs 
-              rounded-full px-2 py-[2px]
-              shadow-md
-            ">
-              {count}
-            </span>
-          )}
-        </Link>
+          ← Main Site
+        </a>
 
       </div>
-    </header>
-  )
+
+      {/* Cart */}
+      <Link 
+        href="/cart" 
+        className="relative text-[var(--text-muted)] hover:text-white transition text-lg"
+      >
+        🛒
+        {count > 0 && (
+          <span className="
+            absolute -top-2 -right-2 
+            bg-[var(--accent-steel)] 
+            text-white text-xs 
+            rounded-full px-2 py-[2px]
+            shadow-md
+          ">
+            {count}
+          </span>
+        )}
+      </Link>
+
+    </div>
+  </header>
+)
 }
