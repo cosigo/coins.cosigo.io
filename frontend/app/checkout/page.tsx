@@ -14,7 +14,7 @@ type CryptoContact = {
 
 export default function CheckoutPage() {
   const [items, setItems] = useState<CartItem[]>([])
-  const [paymentMethod, setPaymentMethod] = useState<'stripe' | 'crypto'>('stripe')
+  const [paymentMethod, setPaymentMethod] = useState<'stripe' | 'crypto' | 'mercadopago'>('stripe')
 
   const [cryptoContact, setCryptoContact] = useState<CryptoContact>({
     name: '',
@@ -32,6 +32,29 @@ export default function CheckoutPage() {
     (sum, item) => sum + item.price_mxn * item.quantity,
     0
   )
+
+  async function startMercadoPagoCheckout() {
+  const cart = items.map(item => ({
+    slug: item.id,
+    name: item.name_en,
+    quantity: item.quantity,
+    price: item.price_mxn,
+  }))
+
+  const res = await fetch('/api/checkout/mercadopago', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ cart }),
+  })
+
+  const data = await res.json()
+
+  if (data.init_point) {
+    window.location.href = data.init_point
+  } else {
+    alert('Unable to start Mercado Pago checkout')
+  }
+}
 
   if (items.length === 0) {
     return (
@@ -75,27 +98,37 @@ export default function CheckoutPage() {
         {/* Payment method */}
         <section>
           <h2 className="font-medium mb-4">Payment method</h2>
-          <div className="space-y-2">
-            <label className="flex items-center gap-2">
-              <input
-                type="radio"
-                name="payment"
-                checked={paymentMethod === 'stripe'}
-                onChange={() => setPaymentMethod('stripe')}
-              />
-              Card / OXXO (Stripe)
-            </label>
+<div className="space-y-2">
+  <label className="flex items-center gap-2">
+    <input
+      type="radio"
+      name="payment"
+      checked={paymentMethod === 'stripe'}
+      onChange={() => setPaymentMethod('stripe')}
+    />
+    Card / OXXO (Stripe)
+  </label>
 
-            <label className="flex items-center gap-2">
-              <input
-                type="radio"
-                name="payment"
-                checked={paymentMethod === 'crypto'}
-                onChange={() => setPaymentMethod('crypto')}
-              />
-              Pay with Crypto
-            </label>
-          </div>
+  <label className="flex items-center gap-2">
+    <input
+      type="radio"
+      name="payment"
+      checked={paymentMethod === 'crypto'}
+      onChange={() => setPaymentMethod('crypto')}
+    />
+    Pay with Crypto
+  </label>
+
+  <label className="flex items-center gap-2">
+    <input
+      type="radio"
+      name="payment"
+      checked={paymentMethod === 'mercadopago'}
+      onChange={() => setPaymentMethod('mercadopago')}
+    />
+    Mercado Pago
+  </label>
+</div>
         </section>
 
         {/* Crypto payment */}
@@ -265,6 +298,15 @@ export default function CheckoutPage() {
             Place order
           </button>
         )}
+
+{paymentMethod === 'mercadopago' && (
+  <button
+    onClick={startMercadoPagoCheckout}
+    className="w-full mt-6 py-3 bg-black text-white rounded"
+  >
+    Pay with Mercado Pago
+  </button>
+)}
 
         {paymentMethod === 'crypto' && (
           <div className="mt-6 text-sm text-gray-600">

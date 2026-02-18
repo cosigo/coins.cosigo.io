@@ -8,9 +8,26 @@ export default function HomePage() {
 
   return (
     <main className="max-w-7xl mx-auto px-8 py-12">
-      <h1 className="text-2xl font-semibold tracking-wide mb-10">
-        Categories
-      </h1>
+
+  {/* Top Icon */}
+  <div className="flex justify-center mb-6">
+    <Image
+      src="/cosigo_badge_embedded.svg"
+      alt="Cosigo"
+      width={100}
+      height={100}
+      className="opacity-90 hover:opacity-100 transition"
+      priority
+    />
+  </div>
+
+  <h1 className="text-2xl font-semibold tracking-wide mb-10 text-center">
+    Please be advised, only BTC, LTC, ETH are accepted payment forms. Credit cards, OXXO and Mercado Pago will be implemented soon.
+  </h1>
+
+  <h1 className="text-2xl font-semibold tracking-wide mb-10 text-center">
+    Categories.
+  </h1>
 
       {/* GRID */}
       <div

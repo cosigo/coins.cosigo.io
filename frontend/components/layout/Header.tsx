@@ -37,7 +37,7 @@ export default function Header() {
           href="/" 
           className="font-semibold text-xl tracking-wide text-[var(--accent-silver)] hover:text-white transition"
         >
-          Cosigo
+          Store Front
         </Link>
 
         {/* Return to Main Site */}
@@ -45,7 +45,7 @@ export default function Header() {
           href="https://cosigo.io"
           className="text-sm text-[var(--text-muted)] hover:text-white transition"
         >
-          ← Main Site
+          ← Cosigo Site
         </a>
 
       </div>
