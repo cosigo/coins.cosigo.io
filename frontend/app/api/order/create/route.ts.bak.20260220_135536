@@ -23,20 +23,8 @@ type CreateOrderBody = {
   notes?: string
 }
 
-type InvoiceItem = {
-  slug: string
-  name_en: string
-  name_es?: string
-  metal: string
-  weight_g: number
-  price_mxn: number
-  quantity: number
-  line_total_mxn: number
-}
-
 function money(n: number) {
-  const safe = Number.isFinite(n) ? n : 0
-  return `$${safe.toLocaleString('en-US')} MXN`
+  return `$${n.toLocaleString('en-US')} MXN`
 }
 
 export async function POST(req: Request) {
@@ -47,80 +35,52 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'No items provided' }, { status: 400 })
     }
 
-    // Build trusted items from server-side catalog (do NOT trust client price/name)
-    const items: InvoiceItem[] = body.items.map((i: any) => {
-      if (!i?.slug || typeof i.slug !== 'string') {
-        throw new Error('Invalid item slug')
-      }
+// Build trusted items from server-side catalog (do NOT trust client price/name)
+const items = body.items.map((i: any) => {
+  if (!i?.slug || typeof i.slug !== 'string') {
+    throw new Error('Invalid item slug')
+  }
 
-      const qty = Number(i.quantity || 0)
-      if (!Number.isFinite(qty) || qty <= 0) {
-        throw new Error(`Invalid quantity for ${i.slug}`)
-      }
+  const qty = Number(i.quantity || 0)
+  if (!Number.isFinite(qty) || qty <= 0) {
+    throw new Error(`Invalid quantity for ${i.slug}`)
+  }
 
-      const p = findProductBySlug(i.slug)
-      if (!p) {
-        throw new Error(`Unknown product slug: ${i.slug}`)
-      }
+  const p = findProductBySlug(i.slug)
+  if (!p) {
+    throw new Error(`Unknown product slug: ${i.slug}`)
+  }
 
-      // Require these fields for invoices
-      if (typeof (p as any).price_mxn !== 'number') {
-        throw new Error(`Product missing price_mxn: ${p.slug}`)
-      }
-      if (typeof (p as any).weight_g !== 'number') {
-        throw new Error(`Product missing weight_g: ${p.slug}`)
-      }
-      if (typeof (p as any).name_en !== 'string') {
-        throw new Error(`Product missing name_en: ${p.slug}`)
-      }
-      if (typeof (p as any).metal !== 'string') {
-        throw new Error(`Product missing metal: ${p.slug}`)
-      }
+  return {
+    slug: p.slug,
+    name_en: p.name_en,
+    name_es: p.name_es,
+    metal: p.metal,
+    weight_g: p.weight_g,
+    price_mxn: p.price_mxn,
+    quantity: qty,
+    line_total_mxn: p.price_mxn * qty,
+  }
+})
 
-      const price_mxn = (p as any).price_mxn as number
-      const weight_g = (p as any).weight_g as number
+const subtotal_mxn = items.reduce((sum, it) => sum + it.line_total_mxn, 0)
 
-      return {
-        slug: p.slug,
-        name_en: (p as any).name_en as string,
-        name_es: (p as any).name_es as string | undefined,
-        metal: (p as any).metal as string,
-        weight_g,
-        price_mxn,
-        quantity: qty,
-        line_total_mxn: price_mxn * qty,
-      }
-    })
-
-    const subtotal_mxn = items.reduce((sum, it) => sum + it.line_total_mxn, 0)
-
-    const orderId = `csg_${new Date().toISOString().slice(0, 10).replace(/-/g, '')}_${crypto
-      .randomBytes(4)
-      .toString('hex')}`
-
-    const buildStamp = `buildstamp_${new Date().toISOString()}_${crypto
-      .randomBytes(2)
-      .toString('hex')}`
+    const orderId = `csg_${new Date().toISOString().slice(0,10).replace(/-/g,'')}_${crypto.randomBytes(4).toString('hex')}`
 
     const order = {
       id: orderId,
-      buildStamp,
       createdAt: new Date().toISOString(),
       currency: 'MXN',
       subtotal_mxn,
-      items,
+      items: items,
       customer: body.customer || {},
       shipping: body.shipping || {},
-      notes: body.notes || '',
       status: 'awaiting_crypto',
       accepted: ['BTC', 'LTC', 'ETH'],
     }
 
-    // Persist order
-    const baseDir =
-      process.env.ORDER_DATA_DIR || path.join(process.cwd(), 'data', 'orders')
+    const baseDir = process.env.ORDER_DATA_DIR || path.join(process.cwd(), 'data', 'orders')
     await fs.mkdir(baseDir, { recursive: true })
-
     const filePath = path.join(baseDir, `${orderId}.json`)
     await fs.writeFile(filePath, JSON.stringify(order, null, 2), 'utf8')
 
@@ -140,14 +100,9 @@ export async function POST(req: Request) {
         auth: { user, pass },
       })
 
-      const lines = items
-        .map(
-          (it) =>
-            `- ${it.name_en} x${it.quantity} (${it.weight_g} g, ${it.metal}) = ${money(
-              it.line_total_mxn
-            )}`
-        )
-        .join('\n')
+const lines = items
+  .map(i => `- ${i.name_en} x${i.quantity} (${i.weight_g} g, ${i.metal}) = ${money(i.line_total_mxn)}`)
+  .join('\n')
 
       await transporter.sendMail({
         from,
@@ -155,7 +110,6 @@ export async function POST(req: Request) {
         subject: `New Cosigo Coin Order: ${orderId}`,
         text:
           `Order: ${orderId}\n` +
-          `Build: ${buildStamp}\n` +
           `Subtotal: ${money(subtotal_mxn)}\n\n` +
           `Items:\n${lines}\n\n` +
           `Customer email: ${body.customer?.email || '(none)'}\n` +
@@ -164,6 +118,7 @@ export async function POST(req: Request) {
       })
     }
 
+    // Return invoice URL
     return NextResponse.json({
       ok: true,
       orderId,
@@ -177,15 +132,3 @@ export async function POST(req: Request) {
     )
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
