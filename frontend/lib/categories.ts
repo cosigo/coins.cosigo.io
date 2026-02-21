@@ -33,6 +33,7 @@ const CATEGORY_META: Partial<Record<ProductCategory, CategoryMeta>> = {
   },
   'franklin-half': {
     label: 'Franklin Half Dollars',
+    image: 'https://cdn.cosigo.io/images/hero/franklin.jpg',
   },
   'kennedy-half': {
     label: 'Kennedy Half Dollars',

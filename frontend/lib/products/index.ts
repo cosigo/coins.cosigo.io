@@ -5,6 +5,7 @@ import { morganDollars } from "./morgan-dollars"
 import { peaceDollars } from "./peace-dollars"
 import { walkingLiberty } from "./walking-liberty-dollar"
 import { walkinglibertyHalf } from "./walking-liberty-half"
+import { franklinHalf } from "./franklin-half"
 
 import { validateProducts } from "./validate"
 
@@ -14,7 +15,8 @@ const merged: Product[] = [
   ...morganDollars,
   ...peaceDollars,
   ...walkingLiberty,
-  ...walkinglibertyHalf
+  ...walkinglibertyHalf,
+  ...franklinHalf
 ]
 
 const { errors } = validateProducts(merged)

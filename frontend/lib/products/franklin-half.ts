@@ -1,0 +1,96 @@
+import type { Product } from './types'
+import { ASSET_BASE } from './types'
+
+export const franklinHalf: Product[] = [
+
+    {
+    id: 'franklin-1948-d-bu-001',
+    slug: 'franklin-1948-d-bu-001',
+    name_en: 'Franklin Half Dollar — 1948-D (BU)',
+    name_es: 'Dólar Frankiln — 1948-D (BU)',
+    category: 'franklin-half',
+    price_mxn: 6400,
+    images: {
+      obverse: `${ASSET_BASE}/images/franklin-half/1948/franklin_1948d_ms_fbl_frosty_key_obv_vdh.jpg`,
+      reverse: `${ASSET_BASE}/images/franklin-half/1948/franklin_1948d_ms_fbl_frosty_key_rev_vdh.jpg`,
+    },
+    metal: 'silver',
+    weight_g: 12.5,
+    inStock: true,
+    },
+    {
+    id: 'franklin-1948-d-bu-002',
+    slug: 'franklin-1948-d-bu-002',
+    name_en: 'Franklin Half Dollar — 1948-D (BU)',
+    name_es: 'Dólar Frankiln — 1948-D (BU)',
+    category: 'franklin-half',
+    price_mxn: 7300,
+    images: {
+      obverse: `${ASSET_BASE}/images/franklin-half/1948/franklin_1948d_ms+_frosty_zzb_obv.jpg`,
+      reverse: `${ASSET_BASE}/images/franklin-half/1948/franklin_1948d_ms+_frosty_zzb_rev.jpg`,
+    },
+    metal: 'silver',
+    weight_g: 12.5,
+    inStock: true,
+    },
+    {
+    id: 'franklin-1948-d-xf-003',
+    slug: 'franklin-1948-d-xf-003',
+    name_en: 'Franklin Half Dollar — 1948-D (XF)',
+    name_es: 'Dólar Frankiln — 1948-D (XF)',
+    category: 'franklin-half',
+    price_mxn: 3200,
+    images: {
+      obverse: `${ASSET_BASE}/images/franklin-half/1948/franklin_1948d_xf_40_perc_bl_patina_key_obv_udz.jpg`,
+      reverse: `${ASSET_BASE}/images/franklin-half/1948/franklin_1948d_xf_40_perc_bl_patina_key_rev_udz.jpg`,
+    },
+    metal: 'silver',
+    weight_g: 12.5,
+    inStock: true,
+    },
+    {
+    id: 'franklin-1948-p-bu-004',
+    slug: 'franklin-1948-p-bu-004',
+    name_en: 'Franklin Half Dollar — 1948-P (BU)',
+    name_es: 'Dólar Frankiln — 1948-p (BU)',
+    category: 'franklin-half',
+    price_mxn: 7400,
+    images: {
+      obverse: `${ASSET_BASE}/images/franklin-half/1948/franklin_1948p_ms_fbl_frosty_key_obv_udh.jpg`,
+      reverse: `${ASSET_BASE}/images/franklin-half/1948/franklin_1948p_ms_fbl_frosty_key_rev_udh.jpg`,
+    },
+    metal: 'silver',
+    weight_g: 12.5,
+    inStock: true,
+    },
+    {
+    id: 'franklin-1948-p-bu-005',
+    slug: 'franklin-1948-p-bu-005',
+    name_en: 'Franklin Half Dollar — 1948-P (BU)',
+    name_es: 'Dólar Frankiln — 1948-p (BU)',
+    category: 'franklin-half',
+    price_mxn: 7300,
+    images: {
+      obverse: `${ASSET_BASE}/images/franklin-half/1948/franklin_1948p_ms_fbl_frosty_key_obv_xdh.jpg`,
+      reverse: `${ASSET_BASE}/images/franklin-half/1948/franklin_1948p_ms_fbl_frosty_key_rev_xdh.jpg`,
+    },
+    metal: 'silver',
+    weight_g: 12.5,
+    inStock: true,
+    },
+    {
+    id: 'franklin-1948-p-au-006',
+    slug: 'franklin-1948-p-au-006',
+    name_en: 'Franklin Half Dollar — 1948-P (AU)',
+    name_es: 'Dólar Frankiln — 1948-p (AU)',
+    category: 'franklin-half',
+    price_mxn: 3600,
+    images: {
+      obverse: `${ASSET_BASE}/images/franklin-half/1948/franklin_1948p_au_patina_xza_obv.jpg`,
+      reverse: `${ASSET_BASE}/images/franklin-half/1948/franklin_1948p_au_patina_xza_rev.jpg`,
+    },
+    metal: 'silver',
+    weight_g: 12.5,
+    inStock: true,
+    },
+]
