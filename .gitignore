@@ -46,3 +46,6 @@ frontend/frontend@*
 frontend/next
 frontend/*.bak
 frontend/*.bak.*
+
+# local runtime data
+frontend/data/
