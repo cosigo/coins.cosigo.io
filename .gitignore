@@ -39,3 +39,10 @@ generate-coins-store.sh
 # Allow tracked placeholders
 !.gitkeep
 
+# scratch / accidental artifacts inside frontend/
+frontend/70
+frontend/Build
+frontend/frontend@*
+frontend/next
+frontend/*.bak
+frontend/*.bak.*

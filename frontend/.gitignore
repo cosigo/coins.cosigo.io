@@ -40,3 +40,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# scratch / accidental artifacts
+70
+Build
+frontend@*
+next
+*.bak
+*.bak.*
