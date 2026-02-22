@@ -49,3 +49,6 @@ frontend/*.bak.*
 
 # local runtime data
 frontend/data/
+
+# server-only deploy helper
+deploy_frontend.sh
