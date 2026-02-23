@@ -1,62 +1,90 @@
+// app/api/checkout/stripe/route.ts
 import { NextResponse } from 'next/server'
-import Stripe from 'stripe'
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
-  apiVersion: '2023-10-16' as Stripe.LatestApiVersion,
-})
+export const runtime = 'nodejs' // ensure Node runtime (Stripe needs it)
+
+type CartItem = {
+  id?: string
+  slug?: string
+  name_en?: string
+  quantity: number
+  price_mxn: number
+  images?: { obverse?: string }
+}
 
 export async function POST(req: Request) {
   try {
-    const body = await req.json() as any
-    const items = body.items as any[]
-    const currency = body.currency as string
-    const orderId = body.orderId as string | undefined
+    const body = await req.json()
+    const items = (body?.items || []) as CartItem[]
+    const currency = (body?.currency || 'mxn') as string
 
-    if (!items || !Array.isArray(items) || items.length === 0) {
+    // If Stripe isn't configured, don't crash build or runtime.
+    const secretKey = process.env.STRIPE_SECRET_KEY
+    const publishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+    const siteUrl =
+      process.env.NEXT_PUBLIC_SITE_URL || 'https://coins.cosigo.io'
+
+    if (!secretKey || !publishableKey) {
+      return NextResponse.json(
+        {
+          error:
+            'Stripe is not configured on this server (missing STRIPE_SECRET_KEY or NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY).',
+        },
+        { status: 501 }
+      )
+    }
+
+    if (!Array.isArray(items) || items.length === 0) {
       return NextResponse.json({ error: 'No items provided' }, { status: 400 })
     }
 
-    const line_items: Stripe.Checkout.SessionCreateParams.LineItem[] =
-      items.map((item: any) => ({
-        quantity: item.qty ?? item.quantity ?? 1,
-        price_data: {
-          currency,
-          product_data: {
-            name: item.title ?? item.name_en ?? item.slug ?? 'Item',
-            description: item.metal && item.weight_g
-              ? `${item.weight_g} g · ${item.metal}`
-              : undefined,
-          },
-          unit_amount: item.priceCents
-            ? item.priceCents
-            : Math.round((item.price_mxn ?? 0) * 100),
-        },
-      }))
+    // Import + create Stripe ONLY inside the handler
+    const Stripe = (await import('stripe')).default
+    const stripe = new Stripe(secretKey)
 
-    const session = await (stripe as any).checkout.sessions.create({
-      mode: 'payment',
-      payment_method_types:
-        currency === 'mxn'
-          ? ['card', 'oxxo']
-          : ['card'],
-      line_items,
-      success_url: `${process.env.NEXT_PUBLIC_SITE_URL}/order/success`,
-      cancel_url: `${process.env.NEXT_PUBLIC_SITE_URL}/cart`,
-      metadata: orderId
-        ? {
-            source: 'coins.cosigo.io',
-            orderId: String(orderId),
-          }
-        : {
-            source: 'coins.cosigo.io',
+    const line_items = items.map((it) => {
+      const qty = Number(it.quantity || 0)
+      const price = Number(it.price_mxn || 0)
+
+      if (!Number.isFinite(qty) || qty <= 0) {
+        throw new Error('Invalid quantity')
+      }
+      if (!Number.isFinite(price) || price <= 0) {
+        throw new Error('Invalid price')
+      }
+
+      const name = it.name_en || it.slug || it.id || 'Item'
+
+      return {
+        quantity: qty,
+        price_data: {
+          currency: currency.toLowerCase(),
+          product_data: {
+            name,
           },
+          // Stripe expects integer minor units (MXN is 2 decimals)
+          unit_amount: Math.round(price * 100),
+        },
+      }
     })
 
-    return NextResponse.json({ url: session.url })
+    const session = await stripe.checkout.sessions.create({
+      mode: 'payment',
+      line_items,
+      // You can refine these later
+      success_url: `${siteUrl}/checkout?success=1`,
+      cancel_url: `${siteUrl}/checkout?canceled=1`,
+      // if you want OXXO, you'd add payment_method_types, etc.
+    })
+
+    return NextResponse.json({
+      ok: true,
+      url: session.url,
+    })
   } catch (err: any) {
     console.error('Stripe checkout error:', err)
     return NextResponse.json(
-      { error: err?.message || 'Stripe error' },
+      { error: err?.message || 'Server error' },
       { status: 500 }
     )
   }
