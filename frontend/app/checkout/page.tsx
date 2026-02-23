@@ -5,25 +5,24 @@ import { CartItem, getCart } from '@/lib/cart'
 import Link from 'next/link'
 import CryptoEstimate from '@/components/store/CryptoEstimate'
 
-type CryptoContact = {
-  name: string
-  email: string
-  address: string
-  city: string
-  country: string
-}
-
 export default function CheckoutPage() {
   const [items, setItems] = useState<CartItem[]>([])
   const [paymentMethod, setPaymentMethod] = useState<
     'stripe' | 'crypto' | 'mercadopago'
   >('stripe')
 
-  const [cryptoContact, setCryptoContact] = useState<CryptoContact>({
-    name: '',
+  const [customer, setCustomer] = useState({
     email: '',
-    address: '',
+    name: '',
+    phone: '',
+  })
+
+  const [shipping, setShipping] = useState({
+    name: '',
+    line1: '',
     city: '',
+    region: '',
+    postal: '',
     country: '',
   })
 
@@ -51,7 +50,7 @@ export default function CheckoutPage() {
 
   async function startMercadoPagoCheckout() {
     const cart = items.map((item) => ({
-      slug: item.id, // you confirmed id === slug
+      slug: item.id, // id === slug
       name: item.name_en,
       quantity: item.quantity,
       price: item.price_mxn,
@@ -65,29 +64,28 @@ export default function CheckoutPage() {
 
     const data = await res.json()
 
-    if (data.init_point) {
-      window.location.href = data.init_point
-    } else {
-      alert(data?.error || 'Unable to start Mercado Pago checkout')
-    }
+    if (data.init_point) window.location.href = data.init_point
+    else alert(data?.error || 'Unable to start Mercado Pago checkout')
   }
 
   async function createCryptoInvoice() {
+    // validate ONLY when clicking the button
+    if (!customer.email) return alert('Email is required')
+    if (!shipping.name || !shipping.line1 || !shipping.city || !shipping.country) {
+      return alert('Shipping address is incomplete')
+    }
+
     const payload = {
       items: items.map((it) => ({
         slug: it.id, // id === slug
         quantity: it.quantity,
       })),
       customer: {
-        email: cryptoContact.email,
-        name: cryptoContact.name,
+        email: customer.email,
+        name: shipping.name || customer.name,
+        phone: customer.phone,
       },
-      shipping: {
-        name: cryptoContact.name,
-        line1: cryptoContact.address,
-        city: cryptoContact.city,
-        country: cryptoContact.country,
-      },
+      shipping,
       notes: 'checkout:crypto',
     }
 
@@ -129,10 +127,17 @@ export default function CheckoutPage() {
         <section>
           <h2 className="font-medium mb-4">Customer information</h2>
           <div className="grid gap-4">
-            <input className="border p-2 rounded" placeholder="Email address" />
+            <input
+              className="border p-2 rounded"
+              placeholder="Email address"
+              value={customer.email}
+              onChange={(e) => setCustomer((v) => ({ ...v, email: e.target.value }))}
+            />
             <input
               className="border p-2 rounded"
               placeholder="Phone (optional)"
+              value={customer.phone}
+              onChange={(e) => setCustomer((v) => ({ ...v, phone: e.target.value }))}
             />
           </div>
         </section>
@@ -141,18 +146,42 @@ export default function CheckoutPage() {
         <section>
           <h2 className="font-medium mb-4">Shipping address</h2>
           <div className="grid gap-4">
-            <input className="border p-2 rounded" placeholder="Full name" />
+            <input
+              className="border p-2 rounded"
+              placeholder="Full name"
+              value={shipping.name}
+              onChange={(e) => setShipping((v) => ({ ...v, name: e.target.value }))}
+            />
             <input
               className="border p-2 rounded"
               placeholder="Street address"
+              value={shipping.line1}
+              onChange={(e) => setShipping((v) => ({ ...v, line1: e.target.value }))}
             />
-            <input className="border p-2 rounded" placeholder="City" />
+            <input
+              className="border p-2 rounded"
+              placeholder="City"
+              value={shipping.city}
+              onChange={(e) => setShipping((v) => ({ ...v, city: e.target.value }))}
+            />
             <input
               className="border p-2 rounded"
               placeholder="State / Region"
+              value={shipping.region}
+              onChange={(e) => setShipping((v) => ({ ...v, region: e.target.value }))}
             />
-            <input className="border p-2 rounded" placeholder="Postal code" />
-            <input className="border p-2 rounded" placeholder="Country" />
+            <input
+              className="border p-2 rounded"
+              placeholder="Postal code"
+              value={shipping.postal}
+              onChange={(e) => setShipping((v) => ({ ...v, postal: e.target.value }))}
+            />
+            <input
+              className="border p-2 rounded"
+              placeholder="Country"
+              value={shipping.country}
+              onChange={(e) => setShipping((v) => ({ ...v, country: e.target.value }))}
+            />
           </div>
         </section>
 
@@ -193,62 +222,13 @@ export default function CheckoutPage() {
           </div>
         </section>
 
-        {/* Crypto payment */}
+        {/* Crypto instructions */}
         {paymentMethod === 'crypto' && (
           <section className="border rounded-lg p-4">
             <h2 className="font-medium mb-4">Pay with Crypto</h2>
 
-            {/* Required contact/shipping */}
-            <div className="grid gap-3 mb-4">
-              <input
-                className="border p-2 rounded"
-                placeholder="Full name"
-                value={cryptoContact.name}
-                onChange={(e) =>
-                  setCryptoContact((v) => ({ ...v, name: e.target.value }))
-                }
-              />
-
-              <input
-                className="border p-2 rounded"
-                placeholder="Email"
-                value={cryptoContact.email}
-                onChange={(e) =>
-                  setCryptoContact((v) => ({ ...v, email: e.target.value }))
-                }
-              />
-
-              <input
-                className="border p-2 rounded"
-                placeholder="Shipping address"
-                value={cryptoContact.address}
-                onChange={(e) =>
-                  setCryptoContact((v) => ({ ...v, address: e.target.value }))
-                }
-              />
-
-              <input
-                className="border p-2 rounded"
-                placeholder="City"
-                value={cryptoContact.city}
-                onChange={(e) =>
-                  setCryptoContact((v) => ({ ...v, city: e.target.value }))
-                }
-              />
-
-              <input
-                className="border p-2 rounded"
-                placeholder="Country"
-                value={cryptoContact.country}
-                onChange={(e) =>
-                  setCryptoContact((v) => ({ ...v, country: e.target.value }))
-                }
-              />
-            </div>
-
             {/* Wallet addresses */}
             <div className="grid gap-3 text-sm">
-              {/* ETH */}
               <div className="flex items-center justify-between gap-2">
                 <div className="flex flex-col">
                   <span className="font-medium">ETH</span>
@@ -266,7 +246,6 @@ export default function CheckoutPage() {
                 </button>
               </div>
 
-              {/* BTC */}
               <div className="flex items-center justify-between gap-2">
                 <div className="flex flex-col">
                   <span className="font-medium">BTC</span>
@@ -284,7 +263,6 @@ export default function CheckoutPage() {
                 </button>
               </div>
 
-              {/* LTC */}
               <div className="flex items-center justify-between gap-2">
                 <div className="flex flex-col">
                   <span className="font-medium">LTC</span>
@@ -321,9 +299,7 @@ export default function CheckoutPage() {
               <span>
                 {item.name_en} × {item.quantity}
               </span>
-              <span>
-                ${(item.price_mxn * item.quantity).toLocaleString()} MXN
-              </span>
+              <span>${(item.price_mxn * item.quantity).toLocaleString()} MXN</span>
             </div>
           ))}
         </div>
@@ -333,9 +309,7 @@ export default function CheckoutPage() {
           <span>${subtotal.toLocaleString()} MXN</span>
         </div>
 
-        {paymentMethod === 'crypto' && (
-          <CryptoEstimate subtotalMxn={subtotal} />
-        )}
+        {paymentMethod === 'crypto' && <CryptoEstimate subtotalMxn={subtotal} />}
 
         {paymentMethod === 'stripe' && (
           <button
@@ -343,19 +317,12 @@ export default function CheckoutPage() {
               const res = await fetch('/api/checkout/stripe', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                  items,
-                  currency: 'mxn',
-                }),
+                body: JSON.stringify({ items, currency: 'mxn' }),
               })
 
               const data = await res.json()
-
-              if (data.url) {
-                window.location.href = data.url
-              } else {
-                alert(data?.error || 'Unable to start checkout')
-              }
+              if (data.url) window.location.href = data.url
+              else alert(data?.error || 'Unable to start checkout')
             }}
             className="w-full mt-6 py-3 bg-black text-white rounded"
           >
