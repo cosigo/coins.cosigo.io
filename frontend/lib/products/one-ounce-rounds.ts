@@ -2,7 +2,7 @@ import { Product, ASSET_BASE } from "./types"
 
 export const oneOunceRounds: Product[] = [
   {
-    id: "round_1oz",
+    id: "1oz-silver-round",
     slug: "1oz-silver-round",
     name_en: "1 oz Silver Round",
     name_es: "Moneda de Plata 1 oz",
