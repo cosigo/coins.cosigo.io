@@ -3,7 +3,7 @@ import { ASSET_BASE } from "../../config/assets"
 
 export const atb5oz: Product[] = [
   {
-    id: '2010_series_ATB_GC',
+    id: 'atb-5oz-grand-canyon-2010',
     slug: 'atb-5oz-grand-canyon-2010',
     name_en: '5 oz Silver ATB – Grand Canyon',
     name_es: '',
@@ -18,7 +18,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2010_series_ATB_MH',
+    id: 'atb-5oz-mount-hood-2010',
     slug: 'atb-5oz-mount-hood-2010',
     name_en: '5 oz Silver ATB – Mount Hood',
     name_es: '',
@@ -33,7 +33,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2010_series_ATB_YS',
+    id: 'atb-5oz-yellowstone-2010',
     slug: 'atb-5oz-yellowstone-2010',
     name_en: '5 oz Silver ATB – Yellowstone',
     name_es: '',
@@ -48,7 +48,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2010_series_ATB_YO',
+    id: 'atb-5oz-yosemite-2010',
     slug: 'atb-5oz-yosemite-2010',
     name_en: '5 oz Silver ATB – Yosemite',
     name_es: '',
@@ -63,7 +63,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2010_series_ATB_HS',
+    id: 'atb-5oz-hot-springs-2010',
     slug: 'atb-5oz-hot-springs-2010',
     name_en: '5 oz Silver ATB – Hot Springs',
     name_es: '',
@@ -78,7 +78,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2010_series_ATB_Complete_Set',
+    id: 'atb-25oz-complete-2010',
     slug: 'atb-25oz-complete-2010',
     name_en: '25 oz Silver ATB – 2010 Complete Set - Presentation case not included',
     name_es: '',
@@ -93,7 +93,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2011_series_ATB_CH',
+    id: 'atb-5oz-chickasaw-2011',
     slug: 'atb-5oz-chickasaw-2011',
     name_en: '5 oz Silver ATB – Chickasaw',
     name_es: '',
@@ -108,7 +108,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2011_series_ATB_GB',
+    id: 'atb-5oz-gettysburg-2011',
     slug: 'atb-5oz-gettysburg-2011',
     name_en: '5 oz Silver ATB – Gettysburg',
     name_es: '',
@@ -123,7 +123,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2011_series_ATB_GL',
+    id: 'atb-5oz-glacier-2011',
     slug: 'atb-5oz-glacier-2011',
     name_en: '5 oz Silver ATB – Glacier',
     name_es: '',
@@ -138,7 +138,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2011_series_ATB_OL',
+    id: 'atb-5oz-olympic-2011',
     slug: 'atb-5oz-olympic-2011',
     name_en: '5 oz Silver ATB – Olympic',
     name_es: '',
@@ -153,7 +153,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2011_series_ATB_VB',
+    id: 'atb-5oz-vicksburg-2011',
     slug: 'atb-5oz-vicksburg-2011',
     name_en: '5 oz Silver ATB – Vicksburg',
     name_es: '',
@@ -168,7 +168,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2011_series_ATB_Complete_Set',
+    id: 'atb-25oz-complete-2011',
     slug: 'atb-25oz-complete-2011',
     name_en: '25 oz Silver ATB – 2011 Complete Set - Presentation case not included',
     name_es: '',
@@ -183,7 +183,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2012_series_ATB_AC',
+    id: 'atb-5oz-acadia-2012',
     slug: 'atb-5oz-acadia-2012',
     name_en: '5 oz Silver ATB – Acadia',
     name_es: '',
@@ -198,7 +198,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2012_series_ATB_DE',
+    id: 'atb-5oz-denali-2012',
     slug: 'atb-5oz-denali-2012',
     name_en: '5 oz Silver ATB – Denali',
     name_es: '',
@@ -213,7 +213,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2012_series_ATB_HI',
+    id: 'atb-5oz-hawaii-2012',
     slug: 'atb-5oz-hawaii-2012',
     name_en: '5 oz Silver ATB – Hawaii',
     name_es: '',
@@ -228,7 +228,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2012_series_ATB_EC',
+    id: 'atb-5oz-el-chaco-2012',
     slug: 'atb-5oz-el-chaco-2012',
     name_en: '5 oz Silver ATB – El Chaco',
     name_es: '',
@@ -243,7 +243,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2012_series_ATB_EY',
+    id: 'atb-5oz-el-yunque-2012',
     slug: 'atb-5oz-el-yunque-2012',
     name_en: '5 oz Silver ATB – El Yunque',
     name_es: '',
@@ -258,7 +258,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2012_series_ATB_set',
+    id: 'atb-5oz-set-2012',
     slug: 'atb-5oz-set-2012',
     name_en: '5 oz Silver ATB – 2012 Complete Set - Presentation case not included',
     name_es: '',
@@ -273,7 +273,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2013_series_ATB_FM',
+    id: 'atb-5oz-fort-mchenry-2013',
     slug: 'atb-5oz-fort-mchenry-2013',
     name_en: '5 oz Silver ATB – Fort McHenry',
     name_es: '',
@@ -288,7 +288,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2013_series_ATB_GB',
+    id: 'atb-5oz-great-basin-2013',
     slug: 'atb-5oz-great-basin-2013',
     name_en: '5 oz Silver ATB – Great Basin',
     name_es: '',
@@ -303,7 +303,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2013_series_ATB_MR',
+    id: 'atb-5oz-mount-rushmore-2013',
     slug: 'atb-5oz-mount-rushmore-2013',
     name_en: '5 oz Silver ATB – Mount Rushmore',
     name_es: '',
@@ -318,7 +318,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2013_series_ATB_PV',
+    id: 'atb-5oz-perrys_victory-2013',
     slug: 'atb-5oz-perrys_victory-2013',
     name_en: '5 oz Silver ATB – Perrys Victory',
     name_es: '',
@@ -333,7 +333,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2013_series_ATB_WM',
+    id: 'atb-5oz-white-mountain-2013',
     slug: 'atb-5oz-white-mountain-2013',
     name_en: '5 oz Silver ATB – White Mountain',
     name_es: '',
@@ -348,7 +348,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2013_series_ATB_Set',
+    id: 'atb-5oz-set-2013',
     slug: 'atb-5oz-set-2013',
     name_en: '5 oz Silver ATB – Complete Set',
     name_es: '',
@@ -363,7 +363,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2014_series_ATB_AR',
+    id: 'atb-5oz-arches-2014',
     slug: 'atb-5oz-arches-2014',
     name_en: '5 oz Silver ATB – Arches',
     name_es: '',
@@ -378,7 +378,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2014_series_ATB_SD',
+    id: 'atb-5oz-great-sand-dunes-2014',
     slug: 'atb-5oz-great-sand-dunes-2014',
     name_en: '5 oz Silver ATB – Great Sand Dunes',
     name_es: '',
@@ -393,7 +393,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2014_series_ATB_SM',
+    id: 'atb-5oz-great-smokey-mountains-2014',
     slug: 'atb-5oz-great-smokey-mountains-2014',
     name_en: '5 oz Silver ATB – Great Smokey Mountains',
     name_es: '',
@@ -408,7 +408,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2014_series_ATB_SH',
+    id: 'atb-5oz-shenandoah-2014',
     slug: 'atb-5oz-shenandoah-2014',
     name_en: '5 oz Silver ATB – Shenandoah',
     name_es: '',
@@ -423,7 +423,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2014_series_ATB_EG',
+    id: 'atb-5oz-everglades-2014',
     slug: 'atb-5oz-everglades-2014',
     name_en: '5 oz Silver ATB – Everglades',
     name_es: '',
@@ -438,7 +438,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2014_series_ATB_Set',
+    id: 'atb-5oz-set-2014',
     slug: 'atb-5oz-set-2014',
     name_en: '5 oz Silver ATB – Complete Set - Presentation case not included',
     name_es: '',
@@ -453,7 +453,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2015_series_ATB_BR',
+    id: 'atb-5oz-blue-ridge-2015',
     slug: 'atb-5oz-blue-ridge-2015',
     name_en: '5 oz Silver ATB – Blue Ridge',
     name_es: '',
@@ -468,7 +468,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2015_series_ATB_BH',
+    id: 'atb-5oz-bombay-hook-2015',
     slug: 'atb-5oz-bombay-hook-2015',
     name_en: '5 oz Silver ATB – Bombay Hook',
     name_es: '',
@@ -483,7 +483,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2015_series_ATB_HS',
+    id: 'atb-5oz-home-stead-2015',
     slug: 'atb-5oz-home-stead-2015',
     name_en: '5 oz Silver ATB – Home Stead',
     name_es: '',
@@ -498,7 +498,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2015_series_ATB_KI',
+    id: 'atb-5oz-kisatchie-2015',
     slug: 'atb-5oz-kisatchie-2015',
     name_en: '5 oz Silver ATB – Kisatchie',
     name_es: '',
@@ -513,7 +513,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2015_series_ATB_SA',
+    id: 'atb-5oz-saratoga-2015',
     slug: 'atb-5oz-saratoga-2015',
     name_en: '5 oz Silver ATB – Saratoga',
     name_es: '',
@@ -528,7 +528,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2015_series_ATB_Set',
+    id: 'atb-5oz-complete-set-2015',
     slug: 'atb-5oz-complete-set-2015',
     name_en: '5 oz Silver ATB – Complete Set - Presentation case not included',
     name_es: '',
@@ -543,7 +543,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2016_series_ATB_FM',
+    id: 'atb-5oz-fort-moultrie-2016',
     slug: 'atb-5oz-fort-moultrie-2016',
     name_en: '5 oz Silver ATB – Fort Moultrie',
     name_es: '',
@@ -558,7 +558,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2016_series_ATB_HF',
+    id: 'atb-5oz-harpers-ferry-2016',
     slug: 'atb-5oz-harpers-ferry-2016',
     name_en: '5 oz Silver ATB – Harpers Ferry',
     name_es: '',
@@ -573,7 +573,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2016_series_ATB_SH',
+    id: 'atb-5oz-shawnee-2016',
     slug: 'atb-5oz-shawnee-2016',
     name_en: '5 oz Silver ATB – Shawnee',
     name_es: '',
@@ -588,7 +588,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2016_series_ATB_TR',
+    id: 'atb-5oz-theodore-roosevelt-2016',
     slug: 'atb-5oz-theodore-roosevelt-2016',
     name_en: '5 oz Silver ATB – Theodore Roosevelt',
     name_es: '',
@@ -603,7 +603,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2016_series_ATB_CG',
+    id: 'atb-5oz-cumberland-gap-2016',
     slug: 'atb-5oz-cumberland-gap-2016',
     name_en: '5 oz Silver ATB – Cumberland Gap',
     name_es: '',
@@ -618,7 +618,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2017_series_ATB_EM',
+    id: 'atb-5oz-effigy-mounds-2017',
     slug: 'atb-5oz-effigy-mounds-2017',
     name_en: '5 oz Silver ATB – Effigy Mounds',
     name_es: '',
@@ -633,7 +633,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2017_series_ATB_EI',
+    id: 'atb-5oz-ellis-island-2017',
     slug: 'atb-5oz-ellis-island-2017',
     name_en: '5 oz Silver ATB – Ellis Island',
     name_es: '',
@@ -648,7 +648,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2017_series_ATB_FD',
+    id: 'atb-5oz-fredrick-douglass-2017',
     slug: 'atb-5oz-fredrick-douglass-2017',
     name_en: '5 oz Silver ATB – Fredrick Douglass',
     name_es: '',
@@ -663,7 +663,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2017_series_ATB_GR',
+    id: 'atb-5oz-george-rodgers-2017',
     slug: 'atb-5oz-george-rodgers-2017',
     name_en: '5 oz Silver ATB – George Rodgers',
     name_es: '',
@@ -678,7 +678,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2017_series_ATB_OZ',
+    id: 'atb-5oz-ozark-2017',
     slug: 'atb-5oz-ozark-2017',
     name_en: '5 oz Silver ATB – Ozark',
     name_es: '',
@@ -693,7 +693,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2018_series_ATB_AI',
+    id: 'atb-5oz-apostle-islands-2018',
     slug: 'atb-5oz-apostle-islands-2018',
     name_en: '5 oz Silver ATB – Apostle Islands',
     name_es: '',
@@ -708,7 +708,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2018_series_ATB_BI',
+    id: 'atb-5oz-block-island-2018',
     slug: 'atb-5oz-block-island-2018',
     name_en: '5 oz Silver ATB – Block Island',
     name_es: '',
@@ -723,7 +723,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2018_series_ATB_CI',
+    id: 'atb-5oz-cumberland-island-2018',
     slug: 'atb-5oz-cumberland-island-2018',
     name_en: '5 oz Silver ATB – Cumberland Island',
     name_es: '',
@@ -738,7 +738,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2018_series_ATB_PR',
+    id: 'atb-5oz-pictured-rocks-2018',
     slug: 'atb-5oz-pictured-rocks-2018',
     name_en: '5 oz Silver ATB – Pictured Rocks',
     name_es: '',
@@ -753,7 +753,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2018_series_ATB_VO',
+    id: 'atb-5oz-voyageurs-2018',
     slug: 'atb-5oz-voyageurs-2018',
     name_en: '5 oz Silver ATB – Voyageurs',
     name_es: '',
@@ -768,7 +768,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2019_series_ATB_AM',
+    id: 'atb-5oz-american-memorial-park-2019',
     slug: 'atb-5oz-american-memorial-park-2019',
     name_en: '5 oz Silver ATB – American Memorial Park',
     name_es: '',
@@ -783,7 +783,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2019_series_ATB_LP',
+    id: 'atb-5oz-lowell-nh-park-2019',
     slug: 'atb-5oz-lowell-nh-park-2019',
     name_en: '5 oz Silver ATB – Lowell NH Park',
     name_es: '',
@@ -798,7 +798,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2019_series_ATB_NR',
+    id: 'atb-5oz-river-of-no-return-2019',
     slug: 'atb-5oz-river-of-no-return-2019',
     name_en: '5 oz Silver ATB – River Of No Return',
     name_es: '',
@@ -813,7 +813,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2019_series_ATB_SA',
+    id: 'atb-5oz-san-antonio-2019',
     slug: 'atb-5oz-san-antonio-2019',
     name_en: '5 oz Silver ATB – San Antonio Missions NHP',
     name_es: '',
@@ -828,7 +828,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2019_series_ATB_WP',
+    id: 'atb-5oz-war-in-pacific-nhp-2019',
     slug: 'atb-5oz-war-in-pacific-nhp-2019',
     name_en: '5 oz Silver ATB – War in the Pacific NHP',
     name_es: '',
@@ -843,7 +843,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2019_series_ATB_SET',
+    id: 'atb-5oz-set-2019',
     slug: 'atb-5oz-set-2019',
     name_en: '5 oz Silver ATB – 2019 Complete Set - Presentation case not included',
     name_es: '',
@@ -858,7 +858,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2020_series_ATB_SET',
+    id: 'atb-5oz-set-2020',
     slug: 'atb-5oz-set-2020',
     name_en: '5 oz Silver ATB – 2020 Complete Set',
     name_es: '',
@@ -873,7 +873,7 @@ export const atb5oz: Product[] = [
     inStock: true,
   },
   {
-    id: '2021_series_ATB_SET',
+    id: 'atb-5oz-set-2021',
     slug: 'atb-5oz-set-2021',
     name_en: '5 oz Silver ATB – 2021 Complete Set',
     name_es: '',

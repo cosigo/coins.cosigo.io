@@ -39,6 +39,43 @@ function money(n: number) {
   return `$${safe.toLocaleString('en-US')} MXN`
 }
 
+function ceilToDecimals(n: number, decimals: number) {
+  if (!Number.isFinite(n)) return 0
+  const f = Math.pow(10, decimals)
+  return Math.ceil(n * f) / f
+}
+
+async function fetchMxnRatesCoingecko() {
+  const url =
+    'https://api.coingecko.com/api/v3/simple/price' +
+    '?ids=bitcoin,ethereum,litecoin&vs_currencies=mxn'
+
+  const res = await fetch(url, {
+    cache: 'no-store',
+    headers: { accept: 'application/json' },
+  })
+
+  if (!res.ok) {
+    throw new Error(`CoinGecko rates failed: ${res.status} ${res.statusText}`)
+  }
+
+  const data = (await res.json()) as any
+  const mxnPerBtc = Number(data?.bitcoin?.mxn)
+  const mxnPerEth = Number(data?.ethereum?.mxn)
+  const mxnPerLtc = Number(data?.litecoin?.mxn)
+
+  if (![mxnPerBtc, mxnPerEth, mxnPerLtc].every(Number.isFinite)) {
+    throw new Error('CoinGecko returned invalid MXN rates')
+  }
+
+  return {
+    mxnPerBtc,
+    mxnPerEth,
+    mxnPerLtc,
+    fetchedAt: new Date().toISOString(),
+  }
+}
+
 export async function POST(req: Request) {
   try {
     const body = (await req.json()) as CreateOrderBody
@@ -94,6 +131,43 @@ export async function POST(req: Request) {
 
     const subtotal_mxn = items.reduce((sum, it) => sum + it.line_total_mxn, 0)
 
+    // ---- crypto quote (LOCKED at order creation; best-effort) ----
+    const bufferBps = Number(process.env.CRYPTO_BUFFER_BPS || 100) // 1% default
+    const bufferMult = 1 + bufferBps / 10_000
+
+    const addrBTC = process.env.NEXT_PUBLIC_BTC_ADDRESS || ''
+    const addrETH = process.env.NEXT_PUBLIC_ETH_ADDRESS || ''
+    const addrLTC = process.env.NEXT_PUBLIC_LTC_ADDRESS || ''
+
+    let cryptoQuote: any = null
+    try {
+      const rates = await fetchMxnRatesCoingecko()
+
+      const btc = ceilToDecimals((subtotal_mxn / rates.mxnPerBtc) * bufferMult, 8)
+      const eth = ceilToDecimals((subtotal_mxn / rates.mxnPerEth) * bufferMult, 6)
+      const ltc = ceilToDecimals((subtotal_mxn / rates.mxnPerLtc) * bufferMult, 6)
+
+      cryptoQuote = {
+        provider: 'coingecko',
+        fetchedAt: rates.fetchedAt,
+        bufferBps,
+        rates_mxn_per: {
+          BTC: rates.mxnPerBtc,
+          ETH: rates.mxnPerEth,
+          LTC: rates.mxnPerLtc,
+        },
+        addresses: { BTC: addrBTC, ETH: addrETH, LTC: addrLTC },
+        due: { BTC: btc, ETH: eth, LTC: ltc },
+        uris: {
+          BTC: addrBTC ? `bitcoin:${addrBTC}?amount=${btc}` : null,
+          ETH: addrETH ? `ethereum:${addrETH}?value=${eth}` : null,
+          LTC: addrLTC ? `litecoin:${addrLTC}?amount=${ltc}` : null,
+        },
+      }
+    } catch {
+      cryptoQuote = null
+    }
+
     const orderId = `csg_${new Date().toISOString().slice(0, 10).replace(/-/g, '')}_${crypto
       .randomBytes(4)
       .toString('hex')}`
@@ -114,6 +188,7 @@ export async function POST(req: Request) {
       notes: body.notes || '',
       status: 'awaiting_crypto',
       accepted: ['BTC', 'LTC', 'ETH'],
+      cryptoQuote,
     }
 
     // Persist order
@@ -149,6 +224,14 @@ export async function POST(req: Request) {
         )
         .join('\n')
 
+      const cryptoLines =
+        order.cryptoQuote?.due
+          ? `\n\nCrypto due (buffer ${order.cryptoQuote.bufferBps} bps):\n` +
+            `BTC: ${order.cryptoQuote.due.BTC}\n` +
+            `ETH: ${order.cryptoQuote.due.ETH}\n` +
+            `LTC: ${order.cryptoQuote.due.LTC}\n`
+          : ''
+
       await transporter.sendMail({
         from,
         to: notifyTo,
@@ -160,7 +243,8 @@ export async function POST(req: Request) {
           `Items:\n${lines}\n\n` +
           `Customer email: ${body.customer?.email || '(none)'}\n` +
           `Shipping name: ${body.shipping?.name || '(none)'}\n` +
-          `Status: awaiting_crypto\n`,
+          `Status: awaiting_crypto\n` +
+          cryptoLines,
       })
     }
 
@@ -177,15 +261,3 @@ export async function POST(req: Request) {
     )
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-

@@ -2207,20 +2207,6 @@ export const morganDollars: Product[] = [
     weight_g: 26.73,
     inStock: true,
   },
-  {
-    id: 'morgan-1890-cc-bu-148',
-    slug: 'morgan-1890-cc-bu-148',
-    name_en: 'Morgan Dollar — 1890-CC (BU)',
-    name_es: 'Dólar Morgan — 1890-CC (BU)',
-    category: 'morgan-dollars',
-    price_mxn: 27300,
-    images: {
-      obverse: `${ASSET_BASE}/images/morgan-dollars/1890/morgan_1890cc_02_ms_nac_obv.jpg`,
-      reverse: `${ASSET_BASE}/images/morgan-dollars/1890/morgan_1890cc_02_ms_nac_rev.jpg`,
-    },
-    metal: 'silver',
-    weight_g: 26.73,
-    inStock: true,
-  },
+  
 ]
 

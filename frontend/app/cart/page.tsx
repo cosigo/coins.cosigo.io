@@ -9,6 +9,7 @@ import {
 } from '@/lib/cart'
 import Link from 'next/link'
 import Image from 'next/image'
+import CryptoEstimate from '@/components/store/CryptoEstimate'
 
 export default function CartPage() {
   const [items, setItems] = useState<CartItem[]>([])
@@ -128,6 +129,8 @@ export default function CartPage() {
         <div className="text-lg font-semibold">
           Subtotal: ${subtotal.toLocaleString()} MXN
         </div>
+
+        <CryptoEstimate subtotalMxn={subtotal} />
 
         <div className="flex gap-4">
           <Link href="/" className="underline">
