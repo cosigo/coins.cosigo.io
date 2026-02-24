@@ -309,13 +309,30 @@ async function maybeSendCustomerEmail(args: {
   const q = args.cryptoQuote
 
   const ttlHrs =
-  q?.ttlSeconds && Number.isFinite(q.ttlSeconds) ? Math.round((q.ttlSeconds / 3600) * 10) / 10 : null
+    q?.ttlSeconds && Number.isFinite(q.ttlSeconds)
+      ? Math.round((q.ttlSeconds / 3600) * 10) / 10
+      : null
 
-const payText = q?.due
-  ? `\nCrypto due (locked quote${ttlHrs ? ` for ${ttlHrs} hours` : ''}):\n` +
-    `BTC: ${q.due.BTC}\nETH: ${q.due.ETH}\nLTC: ${q.due.LTC}\n` +
-    (q.expiresAt ? `Expires: ${q.expiresAt}\n` : '')
-  : `\nCrypto quote unavailable for this order.\n`
+  const expiresText = q?.expiresAt
+    ? new Date(q.expiresAt).toLocaleString('es-MX', {
+        timeZone: 'America/Mexico_City',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+      })
+    : null
+
+  const lockedLabel = ttlHrs ? `locked quote for ${ttlHrs} hours` : 'locked quote'
+
+  const payText = q?.due
+    ? `\nCrypto due (${lockedLabel}):\n` +
+      `BTC: ${q.due.BTC}\n` +
+      `ETH: ${q.due.ETH}\n` +
+      `LTC: ${q.due.LTC}\n` +
+      (expiresText ? `Expires: ${expiresText}\n` : '')
+    : `\nCrypto quote unavailable for this order.\n`
 
   const orderLink = `https://coins.cosigo.io/order/${args.orderId}`
 
