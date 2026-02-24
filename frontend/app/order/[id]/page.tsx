@@ -20,6 +20,13 @@ export default async function OrderPage({
 
     const q = order.cryptoQuote || null
 
+        const nowMs = Date.now()
+    const expiresMs = q?.expiresAt ? Date.parse(q.expiresAt) : null
+    const isExpired =
+      typeof expiresMs === 'number' && Number.isFinite(expiresMs)
+        ? nowMs > expiresMs
+        : false
+
     const qrBTC = q?.uris?.BTC ? await QRCode.toDataURL(q.uris.BTC) : null
     const qrETH = q?.uris?.ETH ? await QRCode.toDataURL(q.uris.ETH) : null
     const qrLTC = q?.uris?.LTC ? await QRCode.toDataURL(q.uris.LTC) : null
@@ -54,8 +61,24 @@ export default async function OrderPage({
         </div>
         </div>
 
-          {q?.due ? (
-            <>
+                    {q?.due ? (
+            isExpired ? (
+              <div className="text-sm opacity-80">
+                This crypto quote has expired.
+                {q?.expiresAt ? (
+                  <>
+                    {' '}
+                    Expired at:{' '}
+                    {new Date(q.expiresAt).toLocaleString('es-MX')}
+                    .
+                  </>
+                ) : null}
+                <div className="mt-2">
+                  Please create a new order to get a fresh quote.
+                </div>
+              </div>
+            ) : (
+              <>
               <div className="text-sm opacity-80 mb-4">
                 Locked quote:{' '}
                 {q.fetchedAt ? new Date(q.fetchedAt).toLocaleString('es-MX') : '—'}
@@ -110,6 +133,7 @@ export default async function OrderPage({
                 Send the quoted amount. Your order confirms after payment is received and confirmed on the network.
               </div>
             </>
+            )
           ) : (
             <div className="text-sm opacity-80">
               Crypto quote unavailable for this order.
