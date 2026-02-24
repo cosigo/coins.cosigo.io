@@ -27,6 +27,10 @@ export default async function OrderPage({
         ? nowMs > expiresMs
         : false
 
+    const ttlSeconds = Number(q?.ttlSeconds || 0)
+    const ttlHours =
+      ttlSeconds > 0 ? Math.round((ttlSeconds / 3600) * 10) / 10 : null   
+
     const qrBTC = q?.uris?.BTC ? await QRCode.toDataURL(q.uris.BTC) : null
     const qrETH = q?.uris?.ETH ? await QRCode.toDataURL(q.uris.ETH) : null
     const qrLTC = q?.uris?.LTC ? await QRCode.toDataURL(q.uris.LTC) : null
@@ -80,7 +84,9 @@ export default async function OrderPage({
             ) : (
               <>
               <div className="text-sm opacity-80 mb-4">
-                Locked quote:{' '}
+                Crypto due{' '}
+                {ttlHours ? `(locked quote for ${ttlHours} hours)` : '(locked quote)'}
+                {' · '}
                 {q.fetchedAt ? new Date(q.fetchedAt).toLocaleString('es-MX') : '—'}
                 {' · '}
                 Buffer: {q.bufferBps ?? '—'} bps
