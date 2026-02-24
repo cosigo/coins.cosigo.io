@@ -9,7 +9,6 @@ export default async function OrderPage({
   params: Promise<{ id: string }>
 }) {
   const { id } = await params
-
   if (!id) return notFound()
 
   const baseDir = process.env.ORDER_DATA_DIR || '/srv/data/orders'
@@ -47,13 +46,13 @@ export default async function OrderPage({
           <div className="text-lg font-semibold mb-1">Pay with crypto</div>
 
           <div className="mt-6 rounded-xl border border-white/10 p-4">
-  <div className="font-medium mb-2">Customer</div>
-  <div className="text-sm opacity-80">Email: {order.customer?.email || '—'}</div>
-  <div className="text-sm opacity-80">Name: {order.shipping?.name || order.customer?.name || '—'}</div>
-  <div className="text-sm opacity-80">
-    Ship to: {order.shipping?.line1 || '—'}, {order.shipping?.city || '—'}, {order.shipping?.region || '—'} {order.shipping?.postal || '—'}, {order.shipping?.country || '—'}
-  </div>
-</div>
+          <div className="font-medium mb-2">Customer</div>
+          <div className="text-sm opacity-80">Email: {order.customer?.email || '—'}</div>
+          <div className="text-sm opacity-80">Name: {order.shipping?.name || order.customer?.name || '—'}</div>
+          <div className="text-sm opacity-80">
+          Ship to: {order.shipping?.line1 || '—'}, {order.shipping?.city || '—'}, {order.shipping?.region || '—'} {order.shipping?.postal || '—'}, {order.shipping?.country || '—'}
+        </div>
+        </div>
 
           {q?.due ? (
             <>
