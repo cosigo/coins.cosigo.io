@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { CartItem, getCart } from '@/lib/cart'
+import { CartItem, getCart, clearCart } from '@/lib/cart'
 import Link from 'next/link'
 import CryptoEstimate from '@/components/store/CryptoEstimate'
 
@@ -26,15 +26,12 @@ export default function CheckoutPage() {
     country: '',
   })
 
-  // Wallet addresses from env (NEXT_PUBLIC_ is safe for client)
   const BTC_ADDR =
     process.env.NEXT_PUBLIC_BTC_ADDRESS ||
     'bc1qrr0rnfauvxndj4pf7pcgluhas939egxv4g9zs9'
-
   const ETH_ADDR =
     process.env.NEXT_PUBLIC_ETH_ADDRESS ||
     '0x0d7f0ec7d6baed0e82f4f759342868936f8cdc3e'
-
   const LTC_ADDR =
     process.env.NEXT_PUBLIC_LTC_ADDRESS ||
     'ltc1q0xsnfhzrqzpkegtt60kq9vhpdhvgu0e69tjqn6'
@@ -50,7 +47,7 @@ export default function CheckoutPage() {
 
   async function startMercadoPagoCheckout() {
     const cart = items.map((item) => ({
-      slug: item.id, // id === slug
+      slug: item.id,
       name: item.name_en,
       quantity: item.quantity,
       price: item.price_mxn,
@@ -63,47 +60,52 @@ export default function CheckoutPage() {
     })
 
     const data = await res.json()
-
     if (data.init_point) window.location.href = data.init_point
     else alert(data?.error || 'Unable to start Mercado Pago checkout')
   }
 
   async function createCryptoInvoice() {
-    // validate ONLY when clicking the button
-    if (!customer.email) return alert('Email is required')
-    if (!shipping.name || !shipping.line1 || !shipping.city || !shipping.country) {
-      return alert('Shipping address is incomplete')
-    }
-
-    const payload = {
-      items: items.map((it) => ({
-        slug: it.id, // id === slug
-        quantity: it.quantity,
-      })),
-      customer: {
-        email: customer.email,
-        name: shipping.name || customer.name,
-        phone: customer.phone,
-      },
-      shipping,
-      notes: 'checkout:crypto',
-    }
-
-    const res = await fetch('/api/order/create', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    })
-
-    const data = await res.json()
-
-    if (data?.ok && data?.orderId) {
-      window.location.href = `/order/${data.orderId}`
-      return
-    }
-
-    alert(data?.error || 'Unable to create crypto invoice')
+  // validate ONLY when clicking the button
+  if (!customer.email) {
+    alert('Email is required')
+    return
   }
+
+  if (!shipping.name || !shipping.line1 || !shipping.city || !shipping.country) {
+    alert('Shipping address is incomplete')
+    return
+  }
+
+  const payload = {
+    items: items.map((it) => ({
+      slug: it.id, // id === slug
+      quantity: it.quantity,
+    })),
+    customer: {
+      email: customer.email,
+      name: shipping.name || customer.name,
+      phone: customer.phone,
+    },
+    shipping,
+    notes: 'checkout:crypto',
+  }
+
+  const res = await fetch('/api/order/create', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  })
+
+  const data = await res.json()
+
+  if (data?.ok && data?.orderId) {
+    clearCart()
+    window.location.href = `/order/${data.orderId}`
+    return
+  }
+
+  alert(data?.error || 'Unable to create crypto invoice')
+}
 
   if (items.length === 0) {
     return (
@@ -227,8 +229,8 @@ export default function CheckoutPage() {
           <section className="border rounded-lg p-4">
             <h2 className="font-medium mb-4">Pay with Crypto</h2>
 
-            {/* Wallet addresses */}
             <div className="grid gap-3 text-sm">
+              {/* ETH */}
               <div className="flex items-center justify-between gap-2">
                 <div className="flex flex-col">
                   <span className="font-medium">ETH</span>
@@ -246,6 +248,7 @@ export default function CheckoutPage() {
                 </button>
               </div>
 
+              {/* BTC */}
               <div className="flex items-center justify-between gap-2">
                 <div className="flex flex-col">
                   <span className="font-medium">BTC</span>
@@ -263,6 +266,7 @@ export default function CheckoutPage() {
                 </button>
               </div>
 
+              {/* LTC */}
               <div className="flex items-center justify-between gap-2">
                 <div className="flex flex-col">
                   <span className="font-medium">LTC</span>

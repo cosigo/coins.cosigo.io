@@ -20,8 +20,12 @@ function emitCartUpdate() {
 
 export function getCart(): CartItem[] {
   if (typeof window === 'undefined') return []
-  const raw = localStorage.getItem(CART_KEY)
-  return raw ? JSON.parse(raw) : []
+  try {
+    const raw = localStorage.getItem(CART_KEY)
+    return raw ? (JSON.parse(raw) as CartItem[]) : []
+  } catch {
+    return []
+  }
 }
 
 export function addToCart(product: Product, quantity = 1) {
@@ -54,4 +58,12 @@ export function removeFromCart(productId: string) {
 
   localStorage.setItem(CART_KEY, JSON.stringify(cart))
   emitCartUpdate()   // 🔔 notify UI
+}
+
+export function clearCart() {
+  if (typeof window === 'undefined') return
+  try {
+    localStorage.removeItem(CART_KEY)
+    emitCartUpdate()
+  } catch {}
 }

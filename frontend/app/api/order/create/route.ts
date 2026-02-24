@@ -110,6 +110,15 @@ function buildInvoiceItems(bodyItems: CartItem[]): InvoiceItem[] {
       throw new Error(`Unknown product slug: ${i.slug}`)
     }
 
+    // --- stock gate (optional fields) ---
+    if ((p as any).in_stock === false) {
+      throw new Error(`Out of stock: ${p.slug}`)
+    }
+    const qtyAvail = Number((p as any).qty_available)
+    if (Number.isFinite(qtyAvail) && qtyAvail <= 0) {
+      throw new Error(`Out of stock: ${p.slug}`)
+    }
+
     const price_mxn = (p as any).price_mxn
     const weight_g = (p as any).weight_g
     const name_en = (p as any).name_en
@@ -137,7 +146,6 @@ async function buildCryptoQuote(subtotal_mxn: number): Promise<CryptoQuote | nul
   const bufferBps = Number(process.env.CRYPTO_BUFFER_BPS || 100) // 1% default
   const bufferMult = 1 + bufferBps / 10_000
 
-  // NOTE: these are public addresses; NEXT_PUBLIC is fine
   const addrBTC = process.env.NEXT_PUBLIC_BTC_ADDRESS || ''
   const addrETH = process.env.NEXT_PUBLIC_ETH_ADDRESS || ''
   const addrLTC = process.env.NEXT_PUBLIC_LTC_ADDRESS || ''
@@ -258,9 +266,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'No items provided' }, { status: 400 })
     }
 
-    // Trusted server-side catalog lookup (don’t trust client price/name)
     const items = buildInvoiceItems(body.items)
-
     const subtotal_mxn = items.reduce((sum, it) => sum + it.line_total_mxn, 0)
     const cryptoQuote = await buildCryptoQuote(subtotal_mxn)
 

@@ -6,9 +6,9 @@ import QRCode from 'qrcode'
 export default async function OrderPage({
   params,
 }: {
-  params: Promise<{ id: string }>
+  params: { id: string }
 }) {
-  const { id } = await params
+  const { id } = params
 
   const baseDir =
     process.env.ORDER_DATA_DIR || path.join(process.cwd(), 'data', 'orders')
@@ -45,6 +45,15 @@ export default async function OrderPage({
         {/* Locked crypto invoice */}
         <div className="rounded-2xl border border-white/10 bg-black/10 p-5">
           <div className="text-lg font-semibold mb-1">Pay with crypto</div>
+
+          <div className="mt-6 rounded-xl border border-white/10 p-4">
+  <div className="font-medium mb-2">Customer</div>
+  <div className="text-sm opacity-80">Email: {order.customer?.email || '—'}</div>
+  <div className="text-sm opacity-80">Name: {order.shipping?.name || order.customer?.name || '—'}</div>
+  <div className="text-sm opacity-80">
+    Ship to: {order.shipping?.line1 || '—'}, {order.shipping?.city || '—'}, {order.shipping?.region || '—'} {order.shipping?.postal || '—'}, {order.shipping?.country || '—'}
+  </div>
+</div>
 
           {q?.due ? (
             <>
