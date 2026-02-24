@@ -3,15 +3,18 @@ import path from 'path'
 import { notFound } from 'next/navigation'
 import QRCode from 'qrcode'
 
-export default async function OrderPage({
-  params,
-}: {
-  params: { id: string }
-}) {
-  const { id } = params
+export default async function OrderPage(
+  props: { params: { id: string } }
+) {
+  const id = props?.params?.id
 
-  const baseDir =
-    process.env.ORDER_DATA_DIR || path.join(process.cwd(), 'data', 'orders')
+  if (!id) {
+    throw new Error(
+      `Missing route param "id". props=${JSON.stringify(props)}`
+    )
+  }
+
+  const baseDir = process.env.ORDER_DATA_DIR || '/srv/data/orders'
 
   const filePath = path.join(baseDir, `${id}.json`)
 
