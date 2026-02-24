@@ -38,6 +38,8 @@ type InvoiceItem = {
 type CryptoQuote = {
   provider: 'coingecko'
   fetchedAt: string
+  expiresAt: string        // ✅ add
+  ttlSeconds: number       // ✅ add
   bufferBps: number
   rates_mxn_per: { BTC: number; ETH: number; LTC: number }
   addresses: { BTC: string; ETH: string; LTC: string }
@@ -79,7 +81,12 @@ async function fetchMxnRatesCoingecko() {
     throw new Error('CoinGecko returned invalid MXN rates')
   }
 
-  return { mxnPerBtc, mxnPerEth, mxnPerLtc, fetchedAt: new Date().toISOString() }
+  return {
+    mxnPerBtc,
+    mxnPerEth,
+    mxnPerLtc,
+    fetchedAt: new Date().toISOString(),
+  }
 }
 
 function buildOrderId() {
@@ -110,24 +117,19 @@ function buildInvoiceItems(bodyItems: CartItem[]): InvoiceItem[] {
       throw new Error(`Unknown product slug: ${i.slug}`)
     }
 
-    // --- stock gate (optional fields) ---
-    if ((p as any).in_stock === false) {
-      throw new Error(`Out of stock: ${p.slug}`)
-    }
-    const qtyAvail = Number((p as any).qty_available)
-    if (Number.isFinite(qtyAvail) && qtyAvail <= 0) {
-      throw new Error(`Out of stock: ${p.slug}`)
-    }
-
     const price_mxn = (p as any).price_mxn
     const weight_g = (p as any).weight_g
     const name_en = (p as any).name_en
     const metal = (p as any).metal
 
-    if (typeof price_mxn !== 'number') throw new Error(`Product missing price_mxn: ${p.slug}`)
-    if (typeof weight_g !== 'number') throw new Error(`Product missing weight_g: ${p.slug}`)
-    if (typeof name_en !== 'string') throw new Error(`Product missing name_en: ${p.slug}`)
-    if (typeof metal !== 'string') throw new Error(`Product missing metal: ${p.slug}`)
+    if (typeof price_mxn !== 'number')
+      throw new Error(`Product missing price_mxn: ${p.slug}`)
+    if (typeof weight_g !== 'number')
+      throw new Error(`Product missing weight_g: ${p.slug}`)
+    if (typeof name_en !== 'string')
+      throw new Error(`Product missing name_en: ${p.slug}`)
+    if (typeof metal !== 'string')
+      throw new Error(`Product missing metal: ${p.slug}`)
 
     return {
       slug: p.slug,
@@ -146,12 +148,21 @@ async function buildCryptoQuote(subtotal_mxn: number): Promise<CryptoQuote | nul
   const bufferBps = Number(process.env.CRYPTO_BUFFER_BPS || 100) // 1% default
   const bufferMult = 1 + bufferBps / 10_000
 
+  // 2 hours default (7200). If you want 24h, set 86400.
+  const ttlRaw = Number(process.env.CRYPTO_QUOTE_TTL_SECONDS || 7200)
+  const ttlSeconds = Number.isFinite(ttlRaw) && ttlRaw > 0 ? ttlRaw : 7200
+
+  // public addresses are fine as NEXT_PUBLIC_*
   const addrBTC = process.env.NEXT_PUBLIC_BTC_ADDRESS || ''
   const addrETH = process.env.NEXT_PUBLIC_ETH_ADDRESS || ''
   const addrLTC = process.env.NEXT_PUBLIC_LTC_ADDRESS || ''
 
   try {
     const rates = await fetchMxnRatesCoingecko()
+
+    const fetchedAtMs = Date.parse(rates.fetchedAt)
+    const baseMs = Number.isFinite(fetchedAtMs) ? fetchedAtMs : Date.now()
+    const expiresAt = new Date(baseMs + ttlSeconds * 1000).toISOString()
 
     const btc = ceilToDecimals((subtotal_mxn / rates.mxnPerBtc) * bufferMult, 8)
     const eth = ceilToDecimals((subtotal_mxn / rates.mxnPerEth) * bufferMult, 6)
@@ -160,6 +171,8 @@ async function buildCryptoQuote(subtotal_mxn: number): Promise<CryptoQuote | nul
     return {
       provider: 'coingecko',
       fetchedAt: rates.fetchedAt,
+      expiresAt,
+      ttlSeconds,
       bufferBps,
       rates_mxn_per: { BTC: rates.mxnPerBtc, ETH: rates.mxnPerEth, LTC: rates.mxnPerLtc },
       addresses: { BTC: addrBTC, ETH: addrETH, LTC: addrLTC },
@@ -184,7 +197,8 @@ function buildOwnerEmailText(args: {
   shipping?: CreateOrderBody['shipping']
   cryptoQuote: CryptoQuote | null
 }) {
-  const { orderId, buildStamp, subtotal_mxn, items, customer, shipping, cryptoQuote } = args
+  const { orderId, buildStamp, subtotal_mxn, items, customer, shipping, cryptoQuote } =
+    args
 
   const lines = items
     .map(
@@ -276,7 +290,7 @@ async function maybeSendCustomerEmail(args: {
   const port = Number(process.env.SMTP_PORT || 587)
   const user = process.env.SMTP_USER
   const pass = process.env.SMTP_PASS
-  const from = process.env.SMTP_FROM || user
+  const from = process.env.CUSTOMER_FROM_EMAIL || process.env.SMTP_FROM
 
   if (!(host && user && pass && from)) return
 
@@ -294,9 +308,14 @@ async function maybeSendCustomerEmail(args: {
   const ship = args.shipping || {}
   const q = args.cryptoQuote
 
-  const payText = q?.due
-    ? `\nCrypto due (locked quote):\nBTC: ${q.due.BTC}\nETH: ${q.due.ETH}\nLTC: ${q.due.LTC}\n`
-    : `\nCrypto quote unavailable for this order.\n`
+  const ttlHrs =
+  q?.ttlSeconds && Number.isFinite(q.ttlSeconds) ? Math.round((q.ttlSeconds / 3600) * 10) / 10 : null
+
+const payText = q?.due
+  ? `\nCrypto due (locked quote${ttlHrs ? ` for ${ttlHrs} hours` : ''}):\n` +
+    `BTC: ${q.due.BTC}\nETH: ${q.due.ETH}\nLTC: ${q.due.LTC}\n` +
+    (q.expiresAt ? `Expires: ${q.expiresAt}\n` : '')
+  : `\nCrypto quote unavailable for this order.\n`
 
   const orderLink = `https://coins.cosigo.io/order/${args.orderId}`
 
@@ -328,7 +347,9 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'No items provided' }, { status: 400 })
     }
 
+    // Trusted server-side catalog lookup (don’t trust client price/name)
     const items = buildInvoiceItems(body.items)
+
     const subtotal_mxn = items.reduce((sum, it) => sum + it.line_total_mxn, 0)
     const cryptoQuote = await buildCryptoQuote(subtotal_mxn)
 
@@ -369,14 +390,18 @@ export async function POST(req: Request) {
       cryptoQuote,
     })
 
-    await maybeSendCustomerEmail({
-      orderId,
-      subtotal_mxn,
-      items,
-      customer: body.customer,
-      shipping: body.shipping,
-      cryptoQuote,
-    })
+    try {
+      await maybeSendCustomerEmail({
+        orderId,
+        subtotal_mxn,
+        items,
+        customer: body.customer,
+        shipping: body.shipping,
+        cryptoQuote,
+      })
+    } catch (e) {
+      console.error('Customer email failed:', e)
+    }
 
     return NextResponse.json({ ok: true, orderId, redirect: `/order/${orderId}` })
   } catch (err: any) {

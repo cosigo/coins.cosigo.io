@@ -20,6 +20,11 @@ export default async function OrderPage({
 
     const q = order.cryptoQuote || null
 
+    const ttlHrs =
+  q?.ttlSeconds && Number.isFinite(q.ttlSeconds)
+    ? Math.round((q.ttlSeconds / 3600) * 10) / 10
+    : null
+
         const nowMs = Date.now()
     const expiresMs = q?.expiresAt ? Date.parse(q.expiresAt) : null
     const isExpired =
@@ -84,15 +89,18 @@ export default async function OrderPage({
             ) : (
               <>
               <div className="text-sm opacity-80 mb-4">
-                Crypto due{' '}
-                {ttlHours ? `(locked quote for ${ttlHours} hours)` : '(locked quote)'}
-                {' · '}
-                {q.fetchedAt ? new Date(q.fetchedAt).toLocaleString('es-MX') : '—'}
-                {' · '}
-                Buffer: {q.bufferBps ?? '—'} bps
-                {' · '}
-                Network fees not included
-              </div>
+  Locked quote{ttlHrs ? ` for ${ttlHrs} hours` : ''}:{' '}
+  {q.fetchedAt ? new Date(q.fetchedAt).toLocaleString('es-MX') : '—'}
+  {' · '}
+  Buffer: {q.bufferBps ?? '—'} bps
+  {q.expiresAt ? (
+    <>
+      {' · '}Expires: {new Date(q.expiresAt).toLocaleString('es-MX')}
+    </>
+  ) : null}
+  {' · '}
+  Network fees not included
+</div>
 
               <div className="grid md:grid-cols-3 gap-4">
                 {/* BTC */}
