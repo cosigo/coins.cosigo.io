@@ -98,11 +98,16 @@ export default function CheckoutPage() {
 
   const data = await res.json()
 
-  if (data?.ok && data?.orderId) {
-    clearCart()
-    window.location.href = `/order/${data.orderId}`
+  if (data?.ok) {
+  const id = data.orderId || data.id || data.order?.id
+  if (!id) {
+    alert('Order created but response did not include an order id')
     return
   }
+  clearCart()
+  window.location.href = `/order/${id}`
+  return
+}
 
   alert(data?.error || 'Unable to create crypto invoice')
 }
