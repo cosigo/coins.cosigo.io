@@ -258,6 +258,68 @@ async function maybeSendOwnerEmail(args: {
   })
 }
 
+async function maybeSendCustomerEmail(args: {
+  orderId: string
+  subtotal_mxn: number
+  items: InvoiceItem[]
+  customer?: CreateOrderBody['customer']
+  shipping?: CreateOrderBody['shipping']
+  cryptoQuote: CryptoQuote | null
+}) {
+  const enabled = (process.env.SEND_CUSTOMER_EMAILS || '0') === '1'
+  if (!enabled) return
+
+  const to = args.customer?.email?.trim()
+  if (!to) return
+
+  const host = process.env.SMTP_HOST
+  const port = Number(process.env.SMTP_PORT || 587)
+  const user = process.env.SMTP_USER
+  const pass = process.env.SMTP_PASS
+  const from = process.env.SMTP_FROM || user
+
+  if (!(host && user && pass && from)) return
+
+  const transporter = nodemailer.createTransport({
+    host,
+    port,
+    secure: port === 465,
+    auth: { user, pass },
+  })
+
+  const lines = args.items
+    .map((it) => `- ${it.name_en} x${it.quantity} = ${money(it.line_total_mxn)}`)
+    .join('\n')
+
+  const ship = args.shipping || {}
+  const q = args.cryptoQuote
+
+  const payText = q?.due
+    ? `\nCrypto due (locked quote):\nBTC: ${q.due.BTC}\nETH: ${q.due.ETH}\nLTC: ${q.due.LTC}\n`
+    : `\nCrypto quote unavailable for this order.\n`
+
+  const orderLink = `https://coins.cosigo.io/order/${args.orderId}`
+
+  await transporter.sendMail({
+    from,
+    to,
+    subject: `Cosigo Coins — Order ${args.orderId} (awaiting crypto)`,
+    text:
+      `Thanks for your order.\n\n` +
+      `Order: ${args.orderId}\n` +
+      `Status: awaiting_crypto\n` +
+      `Subtotal: ${money(args.subtotal_mxn)}\n\n` +
+      `Items:\n${lines}\n\n` +
+      `Ship to:\n` +
+      `${ship.name || ''}\n` +
+      `${ship.line1 || ''}\n` +
+      `${ship.city || ''}, ${ship.region || ''} ${ship.postal || ''}\n` +
+      `${ship.country || ''}\n` +
+      payText +
+      `\nOrder page:\n${orderLink}\n`,
+  })
+}
+
 export async function POST(req: Request) {
   try {
     const body = (await req.json()) as CreateOrderBody
@@ -300,6 +362,15 @@ export async function POST(req: Request) {
     await maybeSendOwnerEmail({
       orderId,
       buildStamp: stamp,
+      subtotal_mxn,
+      items,
+      customer: body.customer,
+      shipping: body.shipping,
+      cryptoQuote,
+    })
+
+    await maybeSendCustomerEmail({
+      orderId,
       subtotal_mxn,
       items,
       customer: body.customer,
