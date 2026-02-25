@@ -1748,7 +1748,7 @@ export const morganDollars: Product[] = [
     name_en: 'Morgan Dollar — 1887-S (BU)',
     name_es: 'Dólar Morgan — 1887-S (BU)',
     category: 'morgan-dollars',
-    price_mxn: 18400,
+    price_mxn: 5900,
     images: {
       obverse: `${ASSET_BASE}/images/morgan-dollars/1887/morgan_1887s_01_ms_obv.jpg`,
       reverse: `${ASSET_BASE}/images/morgan-dollars/1887/morgan_1887s_01_ms_rev.jpg`,
@@ -1763,7 +1763,7 @@ export const morganDollars: Product[] = [
     name_en: 'Morgan Dollar — 1887-S (AU)',
     name_es: 'Dólar Morgan — 1887-S (AU)',
     category: 'morgan-dollars',
-    price_mxn: 13400,
+    price_mxn: 4800,
     images: {
       obverse: `${ASSET_BASE}/images/morgan-dollars/1887/morgan_1887s_02_au+_obv.jpg`,
       reverse: `${ASSET_BASE}/images/morgan-dollars/1887/morgan_1887s_02_au+_rev.jpg`,
@@ -1778,7 +1778,7 @@ export const morganDollars: Product[] = [
     name_en: 'Morgan Dollar — 1888-O (BU)',
     name_es: 'Dólar Morgan — 1888-O (BU)',
     category: 'morgan-dollars',
-    price_mxn: 14400,
+    price_mxn: 3800,
     images: {
       obverse: `${ASSET_BASE}/images/morgan-dollars/1888/morgan_1888o_ms_toned_hh5_obv.jpg`,
       reverse: `${ASSET_BASE}/images/morgan-dollars/1888/morgan_1888o_ms_toned_hh5_rev.jpg`,
@@ -1793,7 +1793,7 @@ export const morganDollars: Product[] = [
     name_en: 'Morgan Dollar — 1888-O (BU)',
     name_es: 'Dólar Morgan — 1888-O (BU)',
     category: 'morgan-dollars',
-    price_mxn: 14400,
+    price_mxn: 3750,
     images: {
       obverse: `${ASSET_BASE}/images/morgan-dollars/1888/morgan_1888o_01_ms_cw_obv.jpg`,
       reverse: `${ASSET_BASE}/images/morgan-dollars/1888/morgan_1888o_01_ms_cw_rev.jpg`,
@@ -1808,7 +1808,7 @@ export const morganDollars: Product[] = [
     name_en: 'Morgan Dollar — 1888-O (XF)',
     name_es: 'Dólar Morgan — 1888-O (XF)',
     category: 'morgan-dollars',
-    price_mxn: 8400,
+    price_mxn: 2550,
     images: {
       obverse: `${ASSET_BASE}/images/morgan-dollars/1888/morgan_1888o_05_au_obv.jpg`,
       reverse: `${ASSET_BASE}/images/morgan-dollars/1888/morgan_1888o_05_au_rev.jpg`,
@@ -1823,7 +1823,7 @@ export const morganDollars: Product[] = [
     name_en: 'Morgan Dollar — 1888-P (BU)',
     name_es: 'Dólar Morgan — 1888-P (BU)',
     category: 'morgan-dollars',
-    price_mxn: 12400,
+    price_mxn: 3450,
     images: {
       obverse: `${ASSET_BASE}/images/morgan-dollars/1888/morgan_1888p_02_ms_toned_obv.jpg`,
       reverse: `${ASSET_BASE}/images/morgan-dollars/1888/morgan_1888p_02_ms_toned_rev.jpg`,
@@ -1838,7 +1838,7 @@ export const morganDollars: Product[] = [
     name_en: 'Morgan Dollar — 1888-P (BU)',
     name_es: 'Dólar Morgan — 1888-P (BU)',
     category: 'morgan-dollars',
-    price_mxn: 14400,
+    price_mxn: 3350,
     images: {
       obverse: `${ASSET_BASE}/images/morgan-dollars/1888/morgan_1888p_ms_toned_hh1_obv.jpg`,
       reverse: `${ASSET_BASE}/images/morgan-dollars/1888/morgan_1888p_ms_toned_hh1_rev.jpg`,
@@ -1853,7 +1853,7 @@ export const morganDollars: Product[] = [
     name_en: 'Morgan Dollar — 1888-S (AU)',
     name_es: 'Dólar Morgan — 1888-S (AU)',
     category: 'morgan-dollars',
-    price_mxn: 17400,
+    price_mxn: 5900,
     images: {
       obverse: `${ASSET_BASE}/images/morgan-dollars/1888/morgan_1888s_01_au_toned_obv.jpg`,
       reverse: `${ASSET_BASE}/images/morgan-dollars/1888/morgan_1888s_01_au_toned_rev.jpg`,
@@ -1868,7 +1868,7 @@ export const morganDollars: Product[] = [
     name_en: 'Morgan Dollar — 1888-S (XF)',
     name_es: 'Dólar Morgan — 1888-S (XF)',
     category: 'morgan-dollars',
-    price_mxn: 11400,
+    price_mxn: 5050,
     images: {
       obverse: `${ASSET_BASE}/images/morgan-dollars/1888/morgan_1888s_02_xf_toned_obv.jpg`,
       reverse: `${ASSET_BASE}/images/morgan-dollars/1888/morgan_1888s_02_xf_toned_rev.jpg`,
@@ -1883,7 +1883,7 @@ export const morganDollars: Product[] = [
     name_en: 'Morgan Dollar — 1889-O (BU)',
     name_es: 'Dólar Morgan — 1889-O (BU)',
     category: 'morgan-dollars',
-    price_mxn: 14400,
+    price_mxn: 14500,
     images: {
       obverse: `${ASSET_BASE}/images/morgan-dollars/1889/morgan_1889o_ms_toned_hi2_obv.jpg`,
       reverse: `${ASSET_BASE}/images/morgan-dollars/1889/morgan_1889o_ms_toned_hi2_rev.jpg`,
@@ -1898,7 +1898,7 @@ export const morganDollars: Product[] = [
     name_en: 'Morgan Dollar — 1889-O (VF)',
     name_es: 'Dólar Morgan — 1889-O (VF)',
     category: 'morgan-dollars',
-    price_mxn: 5500,
+    price_mxn: 4100,
     images: {
       obverse: `${ASSET_BASE}/images/morgan-dollars/1889/morgan_1889o_vf_patina_hi7_obv.jpg`,
       reverse: `${ASSET_BASE}/images/morgan-dollars/1889/morgan_1889o_vf_patina_hi7_rev.jpg`,
@@ -1913,7 +1913,7 @@ export const morganDollars: Product[] = [
     name_en: 'Morgan Dollar — 1889-P (BU)',
     name_es: 'Dólar Morgan — 1889-P (BU)',
     category: 'morgan-dollars',
-    price_mxn: 11500,
+    price_mxn: 3350,
     images: {
       obverse: `${ASSET_BASE}/images/morgan-dollars/1889/morgan_1889p_01_ms_toned_obv.jpg`,
       reverse: `${ASSET_BASE}/images/morgan-dollars/1889/morgan_1889p_01_ms_toned_rev.jpg`,
@@ -1928,7 +1928,7 @@ export const morganDollars: Product[] = [
     name_en: 'Morgan Dollar — 1889-P (BU)',
     name_es: 'Dólar Morgan — 1889-P (BU)',
     category: 'morgan-dollars',
-    price_mxn: 13500,
+    price_mxn: 3250,
     images: {
       obverse: `${ASSET_BASE}/images/morgan-dollars/1889/morgan_1889p_02_ms_toned_obv.jpg`,
       reverse: `${ASSET_BASE}/images/morgan-dollars/1889/morgan_1889p_02_ms_toned_rev.jpg`,
@@ -1943,7 +1943,7 @@ export const morganDollars: Product[] = [
     name_en: 'Morgan Dollar — 1889-P (BU)',
     name_es: 'Dólar Morgan — 1889-P (BU)',
     category: 'morgan-dollars',
-    price_mxn: 8500,
+    price_mxn: 2850,
     images: {
       obverse: `${ASSET_BASE}/images/morgan-dollars/1889/morgan_1889p_AU_patina_b22_obv.jpg`,
       reverse: `${ASSET_BASE}/images/morgan-dollars/1889/morgan_1889p_AU_patina_b22_rev.jpg`,
@@ -1958,7 +1958,7 @@ export const morganDollars: Product[] = [
     name_en: 'Morgan Dollar — 1889-S (BU)',
     name_es: 'Dólar Morgan — 1889-S (BU)',
     category: 'morgan-dollars',
-    price_mxn: 22500,
+    price_mxn: 12700,
     images: {
       obverse: `${ASSET_BASE}/images/morgan-dollars/1889/morgan_1889s_01_ms_obv.jpg`,
       reverse: `${ASSET_BASE}/images/morgan-dollars/1889/morgan_1889s_01_ms_rev.jpg`,
@@ -1973,7 +1973,7 @@ export const morganDollars: Product[] = [
     name_en: 'Morgan Dollar — 1889-S (AU)',
     name_es: 'Dólar Morgan — 1889-S (AU)',
     category: 'morgan-dollars',
-    price_mxn: 17500,
+    price_mxn: 9500,
     images: {
       obverse: `${ASSET_BASE}/images/morgan-dollars/1889/morgan_1889s_02_au_obv.jpg`,
       reverse: `${ASSET_BASE}/images/morgan-dollars/1889/morgan_1889s_02_au_rev.jpg`,
@@ -1988,7 +1988,7 @@ export const morganDollars: Product[] = [
     name_en: 'Morgan Dollar — 1889-CC (AU)',
     name_es: 'Dólar Morgan — 1889-CC (AU)',
     category: 'morgan-dollars',
-    price_mxn: 157500,
+    price_mxn: 145000,
     images: {
       obverse: `${ASSET_BASE}/images/morgan-dollars/1889/1889 cc morgan dollar au obv.jpg`,
       reverse: `${ASSET_BASE}/images/morgan-dollars/1889/1889 cc morgan dollar au rev.jpg`,
@@ -2003,7 +2003,7 @@ export const morganDollars: Product[] = [
     name_en: 'Morgan Dollar — 1889-CC (VF)',
     name_es: 'Dólar Morgan — 1889-CC (VF)',
     category: 'morgan-dollars',
-    price_mxn: 107500,
+    price_mxn: 79000,
     images: {
       obverse: `${ASSET_BASE}/images/morgan-dollars/1889/morgan_1889cc_02_vf_obv.jpg`,
       reverse: `${ASSET_BASE}/images/morgan-dollars/1889/morgan_1889cc_02_vf_rev.jpg`,
@@ -2018,7 +2018,7 @@ export const morganDollars: Product[] = [
     name_en: 'Morgan Dollar — 1889-CC (XF)',
     name_es: 'Dólar Morgan — 1889-CC (XF)',
     category: 'morgan-dollars',
-    price_mxn: 127500,
+    price_mxn: 133000,
     images: {
       obverse: `${ASSET_BASE}/images/morgan-dollars/1889/morgan_1889cc_xf_patina_hi4_obv.jpg`,
       reverse: `${ASSET_BASE}/images/morgan-dollars/1889/morgan_1889cc_xf_patina_hi4_rev.jpg`,
@@ -2033,7 +2033,7 @@ export const morganDollars: Product[] = [
     name_en: 'Morgan Dollar — 1890-O (BU)',
     name_es: 'Dólar Morgan — 1890-O (BU)',
     category: 'morgan-dollars',
-    price_mxn: 9300,
+    price_mxn: 3450,
     images: {
       obverse: `${ASSET_BASE}/images/morgan-dollars/1890/morgan_1890o_02_ms_obv.jpg`,
       reverse: `${ASSET_BASE}/images/morgan-dollars/1890/morgan_1890o_02_ms_rev.jpg`,
@@ -2048,7 +2048,7 @@ export const morganDollars: Product[] = [
     name_en: 'Morgan Dollar — 1890-O (MS62)',
     name_es: 'Dólar Morgan — 1890-O (MS62)',
     category: 'morgan-dollars',
-    price_mxn: 15300,
+    price_mxn: 3850,
     images: {
       obverse: `${ASSET_BASE}/images/morgan-dollars/1890/1890o_front1.jpg`,
       reverse: `${ASSET_BASE}/images/morgan-dollars/1890/1890o_back1.jpg`,
@@ -2063,7 +2063,7 @@ export const morganDollars: Product[] = [
     name_en: 'Morgan Dollar — 1890-O (XF)',
     name_es: 'Dólar Morgan — 1890-O (XF)',
     category: 'morgan-dollars',
-    price_mxn: 5300,
+    price_mxn: 2750,
     images: {
       obverse: `${ASSET_BASE}/images/morgan-dollars/1890/morgan_1890o_06_xf_obv.jpg`,
       reverse: `${ASSET_BASE}/images/morgan-dollars/1890/morgan_1890o_06_xf_rev.jpg`,
@@ -2078,7 +2078,7 @@ export const morganDollars: Product[] = [
     name_en: 'Morgan Dollar — 1890-P (BU)',
     name_es: 'Dólar Morgan — 1890-P (BU)',
     category: 'morgan-dollars',
-    price_mxn: 13300,
+    price_mxn: 4250,
     images: {
       obverse: `${ASSET_BASE}/images/morgan-dollars/1890/1890_p_morgan_ms_pl_obv_uca.jpg`,
       reverse: `${ASSET_BASE}/images/morgan-dollars/1890/1890_p_morgan_ms_pl_rev_uca.jpg`,
@@ -2093,7 +2093,7 @@ export const morganDollars: Product[] = [
     name_en: 'Morgan Dollar — 1890-P (BU)',
     name_es: 'Dólar Morgan — 1890-P (BU)',
     category: 'morgan-dollars',
-    price_mxn: 13300,
+    price_mxn: 4300,
     images: {
       obverse: `${ASSET_BASE}/images/morgan-dollars/1890/1890_p_morgan_ms_pl_obv_uch.jpg`,
       reverse: `${ASSET_BASE}/images/morgan-dollars/1890/1890_p_morgan_ms_pl_rev_uch.jpg`,
@@ -2108,7 +2108,7 @@ export const morganDollars: Product[] = [
     name_en: 'Morgan Dollar — 1890-P (AU)',
     name_es: 'Dólar Morgan — 1890-P (AU)',
     category: 'morgan-dollars',
-    price_mxn: 12300,
+    price_mxn: 3100,
     images: {
       obverse: `${ASSET_BASE}/images/morgan-dollars/1890/morgan_1890p_01_au+_obv.jpg`,
       reverse: `${ASSET_BASE}/images/morgan-dollars/1890/morgan_1890p_01_au+_rev.jpg`,
@@ -2123,7 +2123,7 @@ export const morganDollars: Product[] = [
     name_en: 'Morgan Dollar — 1890-P (AU)',
     name_es: 'Dólar Morgan — 1890-P (AU)',
     category: 'morgan-dollars',
-    price_mxn: 8300,
+    price_mxn: 3300,
     images: {
       obverse: `${ASSET_BASE}/images/morgan-dollars/1890/morgan_1890p_02_au_obv.jpg`,
       reverse: `${ASSET_BASE}/images/morgan-dollars/1890/morgan_1890p_02_au_rev.jpg`,
@@ -2138,7 +2138,7 @@ export const morganDollars: Product[] = [
     name_en: 'Morgan Dollar — 1890-S (BU)',
     name_es: 'Dólar Morgan — 1890-S (BU)',
     category: 'morgan-dollars',
-    price_mxn: 16300,
+    price_mxn: 3400,
     images: {
       obverse: `${ASSET_BASE}/images/morgan-dollars/1890/$T2eC16Z,!zUE9s38+EOGBSC(BrdJlw~~60_3.JPG`,
       reverse: `${ASSET_BASE}/images/morgan-dollars/1890/$T2eC16VHJH4FHdP(Pb3!BSC(Bt!tmw~~60_3.JPG`,
@@ -2153,7 +2153,7 @@ export const morganDollars: Product[] = [
     name_en: 'Morgan Dollar — 1890-S (AU)',
     name_es: 'Dólar Morgan — 1890-S (AU)',
     category: 'morgan-dollars',
-    price_mxn: 13300,
+    price_mxn: 3450,
     images: {
       obverse: `${ASSET_BASE}/images/morgan-dollars/1890/morgan_1890s_01_au+_obv.jpg`,
       reverse: `${ASSET_BASE}/images/morgan-dollars/1890/morgan_1890s_01_au+_rev.jpg`,
@@ -2168,7 +2168,7 @@ export const morganDollars: Product[] = [
     name_en: 'Morgan Dollar — 1890-S-over-CC (AU)',
     name_es: 'Dólar Morgan — 1890-S-over-CC (AU)',
     category: 'morgan-dollars',
-    price_mxn: 17300,
+    price_mxn: 14500,
     images: {
       obverse: `${ASSET_BASE}/images/morgan-dollars/1890/morgan_1890s_02_au_obv.jpg`,
       reverse: `${ASSET_BASE}/images/morgan-dollars/1890/morgan_1890s_02_au_rev.jpg`,
@@ -2183,7 +2183,7 @@ export const morganDollars: Product[] = [
     name_en: 'Morgan Dollar — 1890-S (AU)',
     name_es: 'Dólar Morgan — 1890-S (AU)',
     category: 'morgan-dollars',
-    price_mxn: 12300,
+    price_mxn: 3300,
     images: {
       obverse: `${ASSET_BASE}/images/morgan-dollars/1890/morgan_1890_s_au+_frosty_iJr_obv.jpg`,
       reverse: `${ASSET_BASE}/images/morgan-dollars/1890/morgan_1890_s_au+_frosty_iJr_rev.jpg`,
@@ -2198,7 +2198,7 @@ export const morganDollars: Product[] = [
     name_en: 'Morgan Dollar — 1890-CC (AU)',
     name_es: 'Dólar Morgan — 1890-CC (AU)',
     category: 'morgan-dollars',
-    price_mxn: 24300,
+    price_mxn: 8900,
     images: {
       obverse: `${ASSET_BASE}/images/morgan-dollars/1890/morgan_1890cc_01_ms_toned_obv.jpg`,
       reverse: `${ASSET_BASE}/images/morgan-dollars/1890/morgan_1890cc_01_ms_toned_rev.jpg`,
