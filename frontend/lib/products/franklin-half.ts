@@ -9,7 +9,7 @@ export const franklinHalf: Product[] = [
     name_en: 'Franklin Half Dollar — 1948-D (BU)',
     name_es: 'Dólar Frankiln — 1948-D (BU)',
     category: 'franklin-half',
-    price_mxn: 6400,
+    price_mxn: 2240,
     images: {
       obverse: `${ASSET_BASE}/images/franklin-half/1948/franklin_1948d_ms_fbl_frosty_key_obv_vdh.jpg`,
       reverse: `${ASSET_BASE}/images/franklin-half/1948/franklin_1948d_ms_fbl_frosty_key_rev_vdh.jpg`,
@@ -24,7 +24,7 @@ export const franklinHalf: Product[] = [
     name_en: 'Franklin Half Dollar — 1948-D (BU)',
     name_es: 'Dólar Frankiln — 1948-D (BU)',
     category: 'franklin-half',
-    price_mxn: 7300,
+    price_mxn: 2230,
     images: {
       obverse: `${ASSET_BASE}/images/franklin-half/1948/franklin_1948d_ms+_frosty_zzb_obv.jpg`,
       reverse: `${ASSET_BASE}/images/franklin-half/1948/franklin_1948d_ms+_frosty_zzb_rev.jpg`,
@@ -39,7 +39,7 @@ export const franklinHalf: Product[] = [
     name_en: 'Franklin Half Dollar — 1948-D (XF)',
     name_es: 'Dólar Frankiln — 1948-D (XF)',
     category: 'franklin-half',
-    price_mxn: 3200,
+    price_mxn: 1880,
     images: {
       obverse: `${ASSET_BASE}/images/franklin-half/1948/franklin_1948d_xf_40_perc_bl_patina_key_obv_udz.jpg`,
       reverse: `${ASSET_BASE}/images/franklin-half/1948/franklin_1948d_xf_40_perc_bl_patina_key_rev_udz.jpg`,
@@ -54,7 +54,7 @@ export const franklinHalf: Product[] = [
     name_en: 'Franklin Half Dollar — 1948-P (BU)',
     name_es: 'Dólar Frankiln — 1948-p (BU)',
     category: 'franklin-half',
-    price_mxn: 7400,
+    price_mxn: 2240,
     images: {
       obverse: `${ASSET_BASE}/images/franklin-half/1948/franklin_1948p_ms_fbl_frosty_key_obv_udh.jpg`,
       reverse: `${ASSET_BASE}/images/franklin-half/1948/franklin_1948p_ms_fbl_frosty_key_rev_udh.jpg`,
@@ -69,7 +69,7 @@ export const franklinHalf: Product[] = [
     name_en: 'Franklin Half Dollar — 1948-P (BU)',
     name_es: 'Dólar Frankiln — 1948-p (BU)',
     category: 'franklin-half',
-    price_mxn: 7300,
+    price_mxn: 2250,
     images: {
       obverse: `${ASSET_BASE}/images/franklin-half/1948/franklin_1948p_ms_fbl_frosty_key_obv_xdh.jpg`,
       reverse: `${ASSET_BASE}/images/franklin-half/1948/franklin_1948p_ms_fbl_frosty_key_rev_xdh.jpg`,
@@ -84,7 +84,7 @@ export const franklinHalf: Product[] = [
     name_en: 'Franklin Half Dollar — 1949-D (AU)',
     name_es: 'Dólar Frankiln — 1949-D (au)',
     category: 'franklin-half',
-    price_mxn: 6200,
+    price_mxn: 2050,
     images: {
       obverse: `${ASSET_BASE}/images/franklin-half/1949/franklin_1949d_au+_patina_xzb_obv.jpg`,
       reverse: `${ASSET_BASE}/images/franklin-half/1949/franklin_1949d_au+_patina_xzb_rev.jpg`,
@@ -99,7 +99,7 @@ export const franklinHalf: Product[] = [
     name_en: 'Franklin Half Dollar — 1949-D (BU)',
     name_es: 'Dólar Frankiln — 1949-D (BU)',
     category: 'franklin-half',
-    price_mxn: 7200,
+    price_mxn: 2330,
     images: {
       obverse: `${ASSET_BASE}/images/franklin-half/1949/franklin_1949d_ms_fbl_patina_key_obv_udy.jpg`,
       reverse: `${ASSET_BASE}/images/franklin-half/1949/franklin_1949d_ms_fbl_patina_key_rev_udy.jpg`,
@@ -114,7 +114,7 @@ export const franklinHalf: Product[] = [
     name_en: 'Franklin Half Dollar — 1949-D (AU)',
     name_es: 'Dólar Frankiln — 1949-D (AU)',
     category: 'franklin-half',
-    price_mxn: 5200,
+    price_mxn: 2350,
     images: {
       obverse: `${ASSET_BASE}/images/franklin-half/1949/franklin_1949d_au+_patina_xzb_obv.jpg`,
       reverse: `${ASSET_BASE}/images/franklin-half/1949/franklin_1949d_au+_patina_xzb_rev.jpg`,
@@ -129,7 +129,7 @@ export const franklinHalf: Product[] = [
     name_en: 'Franklin Half Dollar — 1949-P (BU)',
     name_es: 'Dólar Frankiln — 1949-P (BU)',
     category: 'franklin-half',
-    price_mxn: 7200,
+    price_mxn: 2240,
     images: {
       obverse: `${ASSET_BASE}/images/franklin-half/1949/franklin_1949p_ms_fbl_patina_key_obv_xdi.jpg`,
       reverse: `${ASSET_BASE}/images/franklin-half/1949/franklin_1949p_ms_fbl_patina_key_rev_xdi.jpg`,
