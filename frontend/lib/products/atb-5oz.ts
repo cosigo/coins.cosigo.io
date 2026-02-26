@@ -548,7 +548,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – Fort Moultrie',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 14900,
+    price_mxn: 12100,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2016/2016_atb_fort_moultrie_5oz_bu.jpg`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2010/2010_atb_5oz_grand_canyon_ms_b.jpg`,
@@ -563,7 +563,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – Harpers Ferry',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 14900,
+    price_mxn: 12200,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2016/2016_atb_harpers_ferry_5oz_bu.jpg`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2010/2010_atb_5oz_grand_canyon_ms_b.jpg`,
@@ -578,7 +578,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – Shawnee',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 14900,
+    price_mxn: 12300,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2016/2016_atb_shawnee_5oz_bu_b.jpg`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2010/2010_atb_5oz_grand_canyon_ms_b.jpg`,
@@ -593,7 +593,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – Theodore Roosevelt',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 15300,
+    price_mxn: 12700,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2016/2016_atb_theodore_roosevelt_gap_5oz_bu.jpg`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2010/2010_atb_5oz_grand_canyon_ms_b.jpg`,
@@ -608,7 +608,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – Cumberland Gap',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 14900,
+    price_mxn: 12300,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2016/2016_atb_cumberland_gap_5oz_bu.png`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2010/2010_atb_5oz_grand_canyon_ms_b.jpg`,
@@ -623,7 +623,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – Effigy Mounds',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 15100,
+    price_mxn: 11700,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2017/2017_atb_effigy_mounds_iowa_BU_rev.jpg`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2017/2017_atb_effigy_mounds_iowa_BU_obv.jpg`,
@@ -638,7 +638,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – Ellis Island',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 15700,
+    price_mxn: 11800,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2017/2017_atb_ellis_island_BU_rev.jpg`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2017/2017_atb_effigy_mounds_iowa_BU_obv.jpg`,
@@ -653,7 +653,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – Fredrick Douglass',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 15700,
+    price_mxn: 14700,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2017/2017_atb_frederick_douglass_BU_rev.jpg`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2017/2017_atb_effigy_mounds_iowa_BU_obv.jpg`,
@@ -668,7 +668,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – George Rodgers',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 15100,
+    price_mxn: 13700,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2017/2017_atb_george_rodgers_BU_rev_a.jpg`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2017/2017_atb_effigy_mounds_iowa_BU_obv.jpg`,
@@ -683,7 +683,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – Ozark',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 15100,
+    price_mxn: 12100,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2017/2017_atb_ozark_BU_rev.jpg`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2017/2017_atb_effigy_mounds_iowa_BU_obv.jpg`,
@@ -713,7 +713,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – Block Island',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 14900,
+    price_mxn: 12900,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2018/2018_atb_block_island_5oz_bu.png`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2017/2017_atb_effigy_mounds_iowa_BU_obv.jpg`,
@@ -728,7 +728,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – Cumberland Island',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 15200,
+    price_mxn: 13200,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2018/2018_atb_cumberland_island_5oz_bu.png`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2017/2017_atb_effigy_mounds_iowa_BU_obv.jpg`,
@@ -743,7 +743,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – Pictured Rocks',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 15200,
+    price_mxn: 13200,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2018/2018_atb_pictured_rocks_5oz_bu.png`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2017/2017_atb_effigy_mounds_iowa_BU_obv.jpg`,
@@ -758,7 +758,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – Voyageurs',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 15200,
+    price_mxn: 14200,
     images: {
       obverse: `${ASSET_BASE}/images/sold/sold_out_trans.png`,
       reverse: `${ASSET_BASE}/images/sold/cosigo_io_infin_trans.png`,
