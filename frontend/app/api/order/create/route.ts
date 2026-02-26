@@ -6,6 +6,75 @@ import nodemailer from 'nodemailer'
 import type { CartItem } from '@/lib/cart'
 import { findProductBySlug } from '@/lib/products/catalog'
 
+const ABUSE_DIR = process.env.ABUSE_DATA_DIR || '/srv/data/abuse'
+const LOCKS_FILE = path.join(ABUSE_DIR, 'locks.json')
+const ATTEMPTS_FILE = path.join(ABUSE_DIR, 'attempts.jsonl')
+
+type Lock = { until: string; reason: string }
+type Locks = { ip?: Record<string, Lock>; email?: Record<string, Lock> }
+
+function nowIso() {
+  return new Date().toISOString()
+}
+
+function sha256(s: string) {
+  return crypto.createHash('sha256').update(s).digest('hex')
+}
+
+async function readLocks(): Promise<Locks> {
+  try {
+    const raw = await fs.readFile(LOCKS_FILE, 'utf8')
+    return JSON.parse(raw) as Locks
+  } catch {
+    return {}
+  }
+}
+
+async function writeLocks(locks: Locks) {
+  await fs.mkdir(ABUSE_DIR, { recursive: true })
+  await fs.writeFile(LOCKS_FILE, JSON.stringify(locks, null, 2), 'utf8')
+}
+
+function isLocked(lock?: Lock) {
+  if (!lock?.until) return false
+  const untilMs = Date.parse(lock.until)
+  return Number.isFinite(untilMs) && Date.now() < untilMs
+}
+
+async function appendAttempt(rec: any) {
+  await fs.mkdir(ABUSE_DIR, { recursive: true })
+  await fs.appendFile(ATTEMPTS_FILE, JSON.stringify(rec) + '\n', 'utf8')
+}
+
+async function countRecentAttempts(opts: {
+  ipKey?: string
+  emailKey?: string
+  windowMs: number
+}) {
+  // cheap scan; fine for low volume. (If it grows, swap to sqlite.)
+  let raw = ''
+  try {
+    raw = await fs.readFile(ATTEMPTS_FILE, 'utf8')
+  } catch {
+    return 0
+  }
+
+  const cutoff = Date.now() - opts.windowMs
+  let count = 0
+
+  for (const line of raw.split('\n')) {
+    if (!line.trim()) continue
+    try {
+      const r = JSON.parse(line)
+      const t = Date.parse(r.attemptedAt || '')
+      if (!Number.isFinite(t) || t < cutoff) continue
+      if (opts.ipKey && r.ipKey === opts.ipKey) count++
+      if (opts.emailKey && r.emailKey === opts.emailKey) count++
+    } catch {}
+  }
+  return count
+}
+
 type CreateOrderBody = {
   items: CartItem[]
   customer?: {
@@ -363,6 +432,55 @@ export async function POST(req: Request) {
     if (!body.items || !Array.isArray(body.items) || body.items.length === 0) {
       return NextResponse.json({ error: 'No items provided' }, { status: 400 })
     }
+
+    const h = req.headers
+    
+// Prefer X-Forwarded-For if behind Caddy / reverse proxy
+const xff = req.headers.get('x-forwarded-for') || ''
+const xri = req.headers.get('x-real-ip') || ''
+const ip = (xff.split(',')[0] || xri || 'unknown').trim()
+
+const email = (body.customer?.email || '').trim().toLowerCase()
+const ipKey = sha256(`ip:${ip}`)
+const emailKey = email ? sha256(`email:${email}`) : undefined
+
+const locks = await readLocks()
+
+const ipLock = locks.ip?.[ipKey]
+if (isLocked(ipLock)) {
+  return NextResponse.json({ error: `Too many attempts. Try again later.` }, { status: 429 })
+}
+
+if (emailKey) {
+  const emailLock = locks.email?.[emailKey]
+  if (isLocked(emailLock)) {
+    return NextResponse.json({ error: `Too many attempts for this email. Try again later.` }, { status: 429 })
+  }
+}
+
+// record attempt (even if we later reject for other reasons)
+await appendAttempt({ attemptedAt: nowIso(), ipKey, emailKey })
+
+// thresholds
+const ipCount = await countRecentAttempts({ ipKey, windowMs: 30 * 60 * 1000 }) // 30 min
+if (ipCount >= 5) {
+  const until = new Date(Date.now() + 2 * 60 * 60 * 1000).toISOString() // 2 hours
+  locks.ip = locks.ip || {}
+  locks.ip[ipKey] = { until, reason: 'rate-limit-ip' }
+  await writeLocks(locks)
+  return NextResponse.json({ error: 'Too many attempts. Try again later.' }, { status: 429 })
+}
+
+if (emailKey) {
+  const emailCount = await countRecentAttempts({ emailKey, windowMs: 2 * 60 * 60 * 1000 }) // 2 hours
+  if (emailCount >= 3) {
+    const until = new Date(Date.now() + 12 * 60 * 60 * 1000).toISOString() // 12 hours
+    locks.email = locks.email || {}
+    locks.email[emailKey] = { until, reason: 'rate-limit-email' }
+    await writeLocks(locks)
+    return NextResponse.json({ error: 'Too many attempts for this email. Try again later.' }, { status: 429 })
+  }
+}
 
     // Trusted server-side catalog lookup (don’t trust client price/name)
     const items = buildInvoiceItems(body.items)
