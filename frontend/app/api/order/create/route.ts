@@ -434,7 +434,7 @@ export async function POST(req: Request) {
     }
 
     const h = req.headers
-    
+
 // Prefer X-Forwarded-For if behind Caddy / reverse proxy
 const xff = req.headers.get('x-forwarded-for') || ''
 const xri = req.headers.get('x-real-ip') || ''
@@ -461,20 +461,21 @@ if (emailKey) {
 // record attempt (even if we later reject for other reasons)
 await appendAttempt({ attemptedAt: nowIso(), ipKey, emailKey })
 
-// thresholds
-const ipCount = await countRecentAttempts({ ipKey, windowMs: 30 * 60 * 1000 }) // 30 min
-if (ipCount >= 5) {
-  const until = new Date(Date.now() + 2 * 60 * 60 * 1000).toISOString() // 2 hours
+// IP thresholds (30 min window)
+  const ipCount = await countRecentAttempts({ ipKey, windowMs: 30 * 60 * 1000 })
+  if (ipCount >= 20) {
+  const until = new Date(Date.now() + 60 * 60 * 1000).toISOString() // 1 hour
   locks.ip = locks.ip || {}
   locks.ip[ipKey] = { until, reason: 'rate-limit-ip' }
   await writeLocks(locks)
   return NextResponse.json({ error: 'Too many attempts. Try again later.' }, { status: 429 })
 }
 
+// Email thresholds (2 hour window)
 if (emailKey) {
-  const emailCount = await countRecentAttempts({ emailKey, windowMs: 2 * 60 * 60 * 1000 }) // 2 hours
-  if (emailCount >= 3) {
-    const until = new Date(Date.now() + 12 * 60 * 60 * 1000).toISOString() // 12 hours
+  const emailCount = await countRecentAttempts({ emailKey, windowMs: 2 * 60 * 60 * 1000 })
+  if (emailCount >= 6) {
+    const until = new Date(Date.now() + 2 * 60 * 60 * 1000).toISOString() // 2 hours
     locks.email = locks.email || {}
     locks.email[emailKey] = { until, reason: 'rate-limit-email' }
     await writeLocks(locks)
