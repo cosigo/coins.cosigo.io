@@ -773,7 +773,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – American Memorial Park',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 15800,
+    price_mxn: 13800,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2019/2019 5 oz Silver ATB American Memorial Park a.png`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2017/2017_atb_effigy_mounds_iowa_BU_obv.jpg`,
@@ -788,7 +788,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – Lowell NH Park',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 15200,
+    price_mxn: 13200,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2019/2019 5 oz Silver ATB Lowell National Historical Park, MA a.png`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2017/2017_atb_effigy_mounds_iowa_BU_obv.jpg`,
@@ -803,7 +803,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – River Of No Return',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 18200,
+    price_mxn: 14200,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2019/2019 5 oz Silver ATB River of no return National Hist. Park, Id a.jpg`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2017/2017_atb_effigy_mounds_iowa_BU_obv.jpg`,
@@ -818,7 +818,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – San Antonio Missions NHP',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 16200,
+    price_mxn: 13900,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2019/2019 5 oz Silver ATB San Antonio Missions National Hist. Park, TX a.png`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2017/2017_atb_effigy_mounds_iowa_BU_obv.jpg`,
@@ -833,7 +833,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – War in the Pacific NHP',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 15500,
+    price_mxn: 13700,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2019/2019 5 oz Silver ATB War in the Pacific National Hist. Park, GU a.png`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2017/2017_atb_effigy_mounds_iowa_BU_obv.jpg`,
@@ -848,7 +848,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – 2019 Complete Set - Presentation case not included',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 74500,
+    price_mxn: 69500,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2019/2019_set.jpg`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2017/2017_atb_effigy_mounds_iowa_BU_obv.jpg`,
