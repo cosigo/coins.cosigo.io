@@ -8,7 +8,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – Grand Canyon',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 16000,
+    price_mxn: 14000,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2010/2010_atb_5oz_grand_canyon_ms_a.jpg`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2010/2010_atb_5oz_grand_canyon_ms_b.jpg`,
@@ -23,7 +23,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – Mount Hood',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 14600,
+    price_mxn: 13000,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2010/2010_atb_5oz_mount_hood_ms_a.jpg`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2010/2010_atb_5oz_grand_canyon_ms_b.jpg`,
@@ -38,7 +38,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – Yellowstone',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 14300,
+    price_mxn: 13400,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2010/2010_atb_5oz_yellowstone_ms_a.jpg`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2010/2010_atb_5oz_grand_canyon_ms_b.jpg`,
@@ -53,7 +53,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – Yosemite',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 14400,
+    price_mxn: 13400,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2010/2010_atb_5oz_yosemite_ms_a.jpg`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2010/2010_atb_5oz_grand_canyon_ms_b.jpg`,
@@ -68,7 +68,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – Hot Springs',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 14300,
+    price_mxn: 13200,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2010/2010_atb_hot_springs_ms.jpg`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2010/2010_atb_5oz_grand_canyon_ms_b.jpg`,
@@ -83,7 +83,7 @@ export const atb5oz: Product[] = [
     name_en: '25 oz Silver ATB – 2010 Complete Set - Presentation case not included',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 72500,
+    price_mxn: 67500,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2010/2010_ATB_Set.jpg`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2010/2010_atb_5oz_grand_canyon_ms_b.jpg`,
@@ -98,7 +98,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – Chickasaw',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 14200,
+    price_mxn: 12800,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2011/atb_2011_chickasaw_ms_dmpl_obv_ku1.jpg`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2011/atb_2011_chickasaw_ms_dmpl_rev_ku1.jpg`,
@@ -113,7 +113,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – Gettysburg',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 14500,
+    price_mxn: 12700,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2011/atb_2011_gettysburg_ms_dmpl_obv_ku4.jpg`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2011/atb_2011_gettysburg_ms_dmpl_rev_ku4.jpg`,
@@ -128,7 +128,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – Glacier',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 14500,
+    price_mxn: 12900,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2011/atb_2011_glacier_ms_dmpl_obv_ku3.jpg`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2011/atb_2011_glacier_ms_dmpl_rev_ku3.jpg`,
@@ -143,7 +143,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – Olympic',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 14500,
+    price_mxn: 12700,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2011/atb_2011_olympic_ms_dmpl_obv_ku2.jpg`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2011/atb_2011_olympic_ms_dmpl_rev_ku2.jpg`,
@@ -158,7 +158,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – Vicksburg',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 14700,
+    price_mxn: 12600,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2011/atb_2011_vicksburg_ms_dmpl_obv_ku5.jpg`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2011/atb_2011_vicksburg_ms_dmpl_rev_ku5.jpg`,
@@ -173,7 +173,7 @@ export const atb5oz: Product[] = [
     name_en: '25 oz Silver ATB – 2011 Complete Set - Presentation case not included',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 72500,
+    price_mxn: 62500,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2011/2011_atb_all.jpg`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2010/2010_atb_5oz_grand_canyon_ms_b.jpg`,
@@ -188,7 +188,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – Acadia',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 15700,
+    price_mxn: 17250,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2012/2012_atb_acadia_5oz_bu_a.jpg`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2010/2010_atb_5oz_grand_canyon_ms_b.jpg`,
@@ -203,7 +203,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – Denali',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 15200,
+    price_mxn: 16500,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2012/2012_atb_denali_bu.jpg`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2010/2010_atb_5oz_grand_canyon_ms_b.jpg`,
@@ -233,7 +233,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – El Chaco',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 16700,
+    price_mxn: 16900,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2012/atb_2012_el_chaco_culture_ms_dmpl_obv_ky2.jpg`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2012/atb_2012_el_chaco_culture_ms_dmpl_rev_ky2.jpg`,
@@ -248,7 +248,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – El Yunque',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 16800,
+    price_mxn: 17200,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2012/atb_2012_el_yunque_ms_dmpl_obv_ky1.jpg`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2012/atb_2012_el_yunque_ms_dmpl_rev_ky1.jpg`,
@@ -263,7 +263,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – 2012 Complete Set - Presentation case not included',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 76000,
+    price_mxn: 83000,
     images: {
       obverse: `${ASSET_BASE}/images/sold/sold_out_trans.png`,
       reverse: `${ASSET_BASE}/images/sold/cosigo_io_infin_trans.png`,
@@ -278,7 +278,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – Fort McHenry',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 13500,
+    price_mxn: 11500,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2013/atb_2013_fort_mchenry_ms_dmpl_obv_kz0.jpg`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2013/atb_2013_fort_mchenry_ms_dmpl_acw_rev.jpg`,
@@ -293,7 +293,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – Great Basin',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 13900,
+    price_mxn: 11900,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2013/atb_2013_great_basin_ms_dmpl_acz_obv.jpg`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2013/atb_2013_great_basin_ms_dmpl_acz_rev.jpg`,
@@ -308,7 +308,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – Mount Rushmore',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 14700,
+    price_mxn: 12300,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2013/atb_2013_mount_rushmore_ms_dmpl_acv_obv.jpg`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2013/atb_2013_mount_rushmore_ms_dmpl_acv_rev.jpg`,
@@ -323,7 +323,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – Perrys Victory',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 13500,
+    price_mxn: 11500,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2013/atb_2013_perrys_victory_ms_dmpl_acy_obv.jpg`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2013/atb_2013_perrys_victory_ms_dmpl_acy_rev.jpg`,
@@ -338,7 +338,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – White Mountain',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 14100,
+    price_mxn: 12100,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2013/atb_2013_white_mountain_ms_dmpl_acx_obv.jpg`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2013/atb_2013_white_mountain_ms_dmpl_acx_rev.jpg`,
@@ -353,7 +353,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – Complete Set',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 71200,
+    price_mxn: 59000,
     images: {
       obverse: `${ASSET_BASE}/images/sold/sold_out_trans.png`,
       reverse: `${ASSET_BASE}/images/sold/cosigo_io_infin_trans.png`,
@@ -368,7 +368,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – Arches',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 14700,
+    price_mxn: 12700,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2014/atb_2014_arches_ms_dmpl_obv_kz1.jpg`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2014/atb_2014_arches_ms_dmpl_rev_kz1.jpg`,
@@ -383,7 +383,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – Great Sand Dunes',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 15100,
+    price_mxn: 13100,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2014/atb_2014_great_sand_dunes_ms_dmpl_obv_kz4.jpg`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2014/atb_2014_great_sand_dunes_ms_dmpl_rev_kz4.jpg`,
@@ -398,7 +398,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – Great Smokey Mountains',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 15100,
+    price_mxn: 13100,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2014/atb_2014_great_smokey_mountain_ms_dmpl_obv_kz3.jpg`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2014/atb_2014_great_smokey_mountain_ms_dmpl_rev_kz3.jpg`,
@@ -413,7 +413,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – Shenandoah',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 14900,
+    price_mxn: 12500,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2014/atb_2014_shenandoah_ms_dmpl_obv_kz2.jpg`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2014/atb_2014_shenandoah_ms_dmpl_rev_kz2.jpg`,
@@ -428,7 +428,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – Everglades',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 15100,
+    price_mxn: 12100,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2014/2014_US_ATB-5oz_Bul_Everglades.jpg`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2010/2010_atb_5oz_grand_canyon_ms_b.jpg`,
@@ -443,7 +443,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – Complete Set - Presentation case not included',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 69900,
+    price_mxn: 59500,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2014/2014-atbs-all.png`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2010/2010_atb_5oz_grand_canyon_ms_b.jpg`,
@@ -458,7 +458,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – Blue Ridge',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 14900,
+    price_mxn: 12100,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2015/2015_atb_blue_ridge_5oz_bu.jpg`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2010/2010_atb_5oz_grand_canyon_ms_b.jpg`,
@@ -473,7 +473,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – Bombay Hook',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 15000,
+    price_mxn: 12700,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2015/2015_atb_bombay_hook_5oz_bu.jpg`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2010/2010_atb_5oz_grand_canyon_ms_b.jpg`,
@@ -488,7 +488,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – Home Stead',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 15900,
+    price_mxn: 12500,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2015/2015_atb_homestead_5oz_bu.jpg`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2010/2010_atb_5oz_grand_canyon_ms_b.jpg`,
@@ -503,7 +503,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – Kisatchie',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 15100,
+    price_mxn: 12100,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2015/2015_atb_kisachie_5oz_bu.jpg`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2010/2010_atb_5oz_grand_canyon_ms_b.jpg`,
@@ -518,7 +518,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – Saratoga',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 14700,
+    price_mxn: 12400,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2015/2015_atb_saratoga_5oz_bu_b.jpg`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2010/2010_atb_5oz_grand_canyon_ms_b.jpg`,
@@ -533,7 +533,7 @@ export const atb5oz: Product[] = [
     name_en: '5 oz Silver ATB – Complete Set - Presentation case not included',
     name_es: '',
     category: 'atb-5oz',
-    price_mxn: 69600,
+    price_mxn: 59500,
     images: {
       obverse: `${ASSET_BASE}/images/atb-5oz/2015/2015_set_a.jpg`,
       reverse: `${ASSET_BASE}/images/atb-5oz/2010/2010_atb_5oz_grand_canyon_ms_b.jpg`,
