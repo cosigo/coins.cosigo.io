@@ -24,7 +24,7 @@ export const franklinHalf: Product[] = [
     name_en: 'Franklin Half Dollar — 1948-D (BU)',
     name_es: 'Dólar Frankiln — 1948-D (BU)',
     category: 'franklin-half',
-    price_mxn: 2230,
+    price_mxn: 2530,
     images: {
       obverse: `${ASSET_BASE}/images/franklin-half/1948/franklin_1948d_ms+_frosty_zzb_obv.jpg`,
       reverse: `${ASSET_BASE}/images/franklin-half/1948/franklin_1948d_ms+_frosty_zzb_rev.jpg`,

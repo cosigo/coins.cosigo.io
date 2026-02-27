@@ -22,7 +22,7 @@ export default function HomePage() {
   </div>
 
   <h1 className="text-2xl font-semibold tracking-wide mb-10 text-center">
-    Please be advised, only BTC, LTC, ETH are accepted payment forms. Credit cards, OXXO and Mercado Pago will be implemented soon.
+    Only BTC, LTC, ETH are accepted payment forms at this time. Credit cards, OXXO and Mercado Pago will be implemented soon.
   </h1>
 
   <h1 className="text-2xl font-semibold tracking-wide mb-10 text-center">
