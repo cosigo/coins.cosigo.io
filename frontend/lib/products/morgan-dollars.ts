@@ -303,8 +303,8 @@ export const morganDollars: Product[] = [
     inStock: true,
   },
   {
-    id: 'morgan-1879-o/cc-au-021',
-    slug: 'morgan-1879-o/cc-au-021',
+    id: 'morgan-1879-o-cc-021',
+    slug: 'morgan-1879-o-cc-au-021',
     name_en: 'Morgan Dollar — 1879-O/CC (AU)',
     name_es: 'Dólar Morgan — 1879-O/CC (AU)',
     category: 'morgan-dollars',
