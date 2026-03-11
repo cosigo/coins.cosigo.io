@@ -36,7 +36,7 @@ export default function Header() {
             href="/"
             className="font-semibold text-xl tracking-wide text-[var(--accent-silver)] hover:text-white transition"
           >
-            Cosigo Store
+            COSIGO Store
           </Link>
 
           <nav className="flex items-center gap-5 text-sm">

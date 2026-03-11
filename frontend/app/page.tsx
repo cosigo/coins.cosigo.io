@@ -13,7 +13,7 @@ export default function HomePage() {
   <div className="flex justify-center mb-6">
     <Image
       src="/cosigo_badge_embedded.svg"
-      alt="Cosigo"
+      alt="COSIGO"
       width={100}
       height={100}
       className="opacity-90 hover:opacity-100 transition"
