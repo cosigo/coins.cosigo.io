@@ -12,7 +12,7 @@ export default function HomePage() {
   {/* Top Icon */}
   <div className="flex justify-center mb-6">
     <Image
-      src="/cosigo_master_128.gif"
+      src="/cosigo_master_128.png"
       alt="COSIGO"
       width={100}
       height={100}
