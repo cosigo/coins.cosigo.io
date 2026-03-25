@@ -15,6 +15,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -30,6 +31,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -45,6 +47,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -60,6 +63,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -75,6 +79,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -90,6 +95,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -105,6 +111,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -120,6 +127,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -135,6 +143,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -150,6 +159,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -165,6 +175,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -180,6 +191,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -195,6 +207,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -210,6 +223,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -225,6 +239,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -240,6 +255,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -255,6 +271,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -270,6 +287,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -285,6 +303,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -300,6 +319,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -315,6 +335,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -330,6 +351,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -345,6 +367,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -360,6 +383,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -375,6 +399,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -390,6 +415,23 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
+    inStock: true,
+  },
+  {
+    id: '2025-2026-15550-cosigo-token',
+    slug: '2025-2026-15550-cosigo-token',
+    name_en: '15,550 Cosigo Token in your wallet 2026',
+    name_es: '15,550 Cosigo Token in your wallet 2026',
+    category: 'morgan-dollars',
+    price_mxn: 950,
+    images: {
+      obverse: `${ASSET_BASE}/images/one-ounce-rounds/cosigo_master_256_obv.png`,
+      reverse: `${ASSET_BASE}/images/one-ounce-rounds/cosigo_mark_option_x_256.png`,
+    },
+    metal: "silver",
+    weight_g: 15.550,
+    stock: 10,
     inStock: true,
   },
   {
@@ -405,6 +447,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -420,6 +463,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -435,6 +479,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -450,6 +495,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -465,6 +511,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -480,6 +527,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -495,6 +543,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -510,6 +559,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -525,6 +575,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -540,6 +591,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -555,6 +607,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -570,6 +623,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -585,6 +639,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -600,6 +655,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -615,6 +671,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -630,6 +687,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -645,6 +703,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -660,6 +719,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -675,6 +735,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -690,6 +751,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -705,6 +767,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -720,6 +783,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -735,6 +799,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -750,6 +815,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -765,6 +831,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -780,6 +847,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -795,6 +863,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -810,6 +879,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -825,6 +895,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -840,6 +911,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -855,6 +927,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -870,6 +943,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -885,6 +959,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -894,6 +969,7 @@ export const morganDollars: Product[] = [
     name_es: 'Dólar Morgan — 1882-S (BU)',
     category: 'morgan-dollars',
     price_mxn: 3450,
+    stock: 1,
     images: {
       obverse: `${ASSET_BASE}/images/morgan-dollars/1882/1882_s_morgan_ms_pl_obv_ucm.jpg`,
       reverse: `${ASSET_BASE}/images/morgan-dollars/1882/1882_s_morgan_ms_pl_rev_ucm.jpg`,
@@ -915,6 +991,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -930,6 +1007,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -945,6 +1023,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -960,6 +1039,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -975,6 +1055,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -990,6 +1071,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1005,6 +1087,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1020,6 +1103,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1035,6 +1119,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1050,6 +1135,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1065,6 +1151,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1080,6 +1167,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1095,6 +1183,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1110,6 +1199,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1125,6 +1215,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1140,6 +1231,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1155,6 +1247,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1170,6 +1263,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1185,6 +1279,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1200,6 +1295,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1215,6 +1311,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1230,6 +1327,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1245,6 +1343,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1260,6 +1359,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1275,6 +1375,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1290,6 +1391,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: false,
   },
   {
@@ -1305,7 +1407,24 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: false,
+  },
+  {
+    id: '2025-2026-7775-cosigo-token',
+    slug: '2025-2026-7775-cosigo-token',
+    name_en: '7,775 Cosigo Token in your wallet 2026',
+    name_es: '7,775 Cosigo Token in your wallet 2026',
+    category: 'morgan-dollars',
+    price_mxn: 500,
+    images: {
+      obverse: `${ASSET_BASE}/images/one-ounce-rounds/cosigo_master_256_obv.png`,
+      reverse: `${ASSET_BASE}/images/one-ounce-rounds/cosigo_mark_option_x_256.png`,
+    },
+    metal: "silver",
+    weight_g: 7.775,
+    stock: 1,
+    inStock: true,
   },
   {
     id: 'morgan-1885-o-bu-088',
@@ -1320,6 +1439,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1335,6 +1455,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1350,6 +1471,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1365,6 +1487,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1380,6 +1503,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1395,6 +1519,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1410,6 +1535,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1425,6 +1551,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1440,6 +1567,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1455,6 +1583,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1470,6 +1599,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1485,6 +1615,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1500,6 +1631,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1515,6 +1647,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1530,6 +1663,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1545,6 +1679,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1560,6 +1695,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1575,6 +1711,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1590,6 +1727,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1605,6 +1743,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1620,6 +1759,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1635,6 +1775,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1650,6 +1791,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1665,6 +1807,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1680,6 +1823,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1695,6 +1839,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1710,6 +1855,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1725,6 +1871,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1740,6 +1887,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1755,6 +1903,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1770,6 +1919,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1785,6 +1935,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1800,6 +1951,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1815,6 +1967,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1830,6 +1983,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1845,6 +1999,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1860,6 +2015,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1875,6 +2031,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1890,6 +2047,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1905,6 +2063,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1920,6 +2079,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1935,6 +2095,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1950,6 +2111,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1965,6 +2127,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1980,6 +2143,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -1995,6 +2159,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -2010,6 +2175,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -2025,6 +2191,23 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
+    inStock: true,
+  },
+  {
+    id: '2025-2026-31000-cosigo-token',
+    slug: '2025-2026-31000-cosigo-token',
+    name_en: '31,100 Cosigo Token in your wallet 2026',
+    name_es: '31,100 Cosigo Token in your wallet 2026',
+    category: 'morgan-dollars',
+    price_mxn: 1800,
+    images: {
+      obverse: `${ASSET_BASE}/images/one-ounce-rounds/cosigo_master_256_obv.png`,
+      reverse: `${ASSET_BASE}/images/one-ounce-rounds/cosigo_mark_option_x_256.png`,
+    },
+    metal: "silver",
+    weight_g: 31.1000,
+    stock: 10,
     inStock: true,
   },
   {
@@ -2040,6 +2223,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -2055,6 +2239,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -2070,6 +2255,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -2085,6 +2271,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -2100,6 +2287,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -2115,6 +2303,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -2130,6 +2319,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -2145,6 +2335,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -2159,7 +2350,8 @@ export const morganDollars: Product[] = [
       reverse: `${ASSET_BASE}/images/morgan-dollars/1890/morgan_1890s_01_au+_rev.jpg`,
     },
     metal: 'silver',
-    weight_g: 26.73,
+    weight_g: 26.7,
+    stock: 1,
     inStock: true,
   },
   {
@@ -2175,6 +2367,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -2190,6 +2383,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -2205,6 +2399,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -2220,6 +2415,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -2235,6 +2431,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -2250,6 +2447,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -2265,6 +2463,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -2280,6 +2479,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -2295,6 +2495,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -2310,6 +2511,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -2325,6 +2527,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -2340,6 +2543,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -2355,6 +2559,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -2370,6 +2575,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -2385,6 +2591,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -2400,6 +2607,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -2415,6 +2623,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -2430,6 +2639,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -2445,6 +2655,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -2460,6 +2671,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -2475,6 +2687,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
   {
@@ -2490,6 +2703,7 @@ export const morganDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
 ]

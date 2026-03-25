@@ -16,6 +16,7 @@ export const franklinHalf: Product[] = [
     },
     metal: 'silver',
     weight_g: 12.5,
+    stock: 1,
     inStock: true,
     },
     {
@@ -31,6 +32,7 @@ export const franklinHalf: Product[] = [
     },
     metal: 'silver',
     weight_g: 12.5,
+    stock: 1,
     inStock: true,
     },
     {
@@ -46,6 +48,7 @@ export const franklinHalf: Product[] = [
     },
     metal: 'silver',
     weight_g: 12.5,
+    stock: 1,
     inStock: true,
     },
     {
@@ -61,6 +64,7 @@ export const franklinHalf: Product[] = [
     },
     metal: 'silver',
     weight_g: 12.5,
+    stock: 1,
     inStock: true,
     },
     {
@@ -76,6 +80,7 @@ export const franklinHalf: Product[] = [
     },
     metal: 'silver',
     weight_g: 12.5,
+    stock: 1,
     inStock: true,
     },
     {
@@ -91,6 +96,7 @@ export const franklinHalf: Product[] = [
     },
     metal: 'silver',
     weight_g: 12.5,
+    stock: 1,
     inStock: true,
     },
     {
@@ -106,6 +112,7 @@ export const franklinHalf: Product[] = [
     },
     metal: 'silver',
     weight_g: 12.5,
+    stock: 1,
     inStock: true,
     },
     {
@@ -121,6 +128,7 @@ export const franklinHalf: Product[] = [
     },
     metal: 'silver',
     weight_g: 12.5,
+    stock: 1,
     inStock: true,
     },
     {
@@ -136,8 +144,25 @@ export const franklinHalf: Product[] = [
     },
     metal: 'silver',
     weight_g: 12.5,
+    stock: 1,
     inStock: true,
     },
+    {
+    id: '2025-2026-15550-cosigo-token',
+    slug: '2025-2026-15550-cosigo-token',
+    name_en: '15,550 Cosigo Token in your wallet 2026',
+    name_es: '15,550 Cosigo Token in your wallet 2026',
+    category: 'franklin-half',
+    price_mxn: 950,
+    images: {
+      obverse: `${ASSET_BASE}/images/one-ounce-rounds/cosigo_master_256_obv.png`,
+      reverse: `${ASSET_BASE}/images/one-ounce-rounds/cosigo_mark_option_x_256.png`,
+    },
+    metal: "silver",
+    weight_g: 15.550,
+    stock: 10,
+    inStock: true,
+  },
     {
     id: 'franklin-1950-d-xf-010',
     slug: 'franklin-1950-d-xf-010',
@@ -151,6 +176,7 @@ export const franklinHalf: Product[] = [
     },
     metal: 'silver',
     weight_g: 12.5,
+    stock: 1,
     inStock: true,
     },
     {
@@ -166,6 +192,7 @@ export const franklinHalf: Product[] = [
     },
     metal: 'silver',
     weight_g: 12.5,
+    stock: 1,
     inStock: true,
     },
     {
@@ -181,6 +208,7 @@ export const franklinHalf: Product[] = [
     },
     metal: 'silver',
     weight_g: 12.5,
+    stock: 1,
     inStock: true,
     },
     {
@@ -196,6 +224,7 @@ export const franklinHalf: Product[] = [
     },
     metal: 'silver',
     weight_g: 12.5,
+    stock: 1,
     inStock: true,
     },
     {
@@ -211,6 +240,7 @@ export const franklinHalf: Product[] = [
     },
     metal: 'silver',
     weight_g: 12.5,
+    stock: 1,
     inStock: true,
     },
     {
@@ -226,6 +256,7 @@ export const franklinHalf: Product[] = [
     },
     metal: 'silver',
     weight_g: 12.5,
+    stock: 1,
     inStock: true,
     },
     {
@@ -241,6 +272,7 @@ export const franklinHalf: Product[] = [
     },
     metal: 'silver',
     weight_g: 12.5,
+    stock: 1,
     inStock: true,
     },
     {
@@ -256,6 +288,7 @@ export const franklinHalf: Product[] = [
     },
     metal: 'silver',
     weight_g: 12.5,
+    stock: 1,
     inStock: true,
     },
     {
@@ -271,6 +304,7 @@ export const franklinHalf: Product[] = [
     },
     metal: 'silver',
     weight_g: 12.5,
+    stock: 1,
     inStock: true,
     },
     {
@@ -286,6 +320,7 @@ export const franklinHalf: Product[] = [
     },
     metal: 'silver',
     weight_g: 12.5,
+    stock: 1,
     inStock: true,
     },
     {
@@ -301,6 +336,7 @@ export const franklinHalf: Product[] = [
     },
     metal: 'silver',
     weight_g: 12.5,
+    stock: 1,
     inStock: true,
     },
     {
@@ -316,6 +352,7 @@ export const franklinHalf: Product[] = [
     },
     metal: 'silver',
     weight_g: 12.5,
+    stock: 1,
     inStock: true,
     },
     {
@@ -331,6 +368,7 @@ export const franklinHalf: Product[] = [
     },
     metal: 'silver',
     weight_g: 12.5,
+    stock: 1,
     inStock: true,
     },
     {
@@ -346,6 +384,7 @@ export const franklinHalf: Product[] = [
     },
     metal: 'silver',
     weight_g: 12.5,
+    stock: 1,
     inStock: true,
     },
     {
@@ -361,6 +400,7 @@ export const franklinHalf: Product[] = [
     },
     metal: 'silver',
     weight_g: 12.5,
+    stock: 1,
     inStock: true,
     },
 ]

@@ -15,6 +15,7 @@ export const peaceDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
+    stock: 1,
     inStock: true,
   },
 ]

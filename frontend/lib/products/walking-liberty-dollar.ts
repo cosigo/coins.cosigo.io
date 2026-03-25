@@ -14,6 +14,7 @@ export const walkingLiberty: Product[] = [
     },
     metal: "silver",
     weight_g: 31.1035,
+    stock: 1,
     inStock: true,
   },
 ]

@@ -41,7 +41,7 @@ function isLocked(lock?: Lock) {
   return Number.isFinite(untilMs) && Date.now() < untilMs
 }
 
-async function appendAttempt(rec: any) {
+async function appendAttempt(rec: unknown) {
   await fs.mkdir(ABUSE_DIR, { recursive: true })
   await fs.appendFile(ATTEMPTS_FILE, JSON.stringify(rec) + '\n', 'utf8')
 }
@@ -51,7 +51,6 @@ async function countRecentAttempts(opts: {
   emailKey?: string
   windowMs: number
 }) {
-  // cheap scan; fine for low volume. (If it grows, swap to sqlite.)
   let raw = ''
   try {
     raw = await fs.readFile(ATTEMPTS_FILE, 'utf8')
@@ -72,6 +71,7 @@ async function countRecentAttempts(opts: {
       if (opts.emailKey && r.emailKey === opts.emailKey) count++
     } catch {}
   }
+
   return count
 }
 
@@ -107,8 +107,8 @@ type InvoiceItem = {
 type CryptoQuote = {
   provider: 'coingecko'
   fetchedAt: string
-  expiresAt: string        // ✅ add
-  ttlSeconds: number       // ✅ add
+  expiresAt: string
+  ttlSeconds: number
   bufferBps: number
   rates_mxn_per: { BTC: number; ETH: number; LTC: number }
   addresses: { BTC: string; ETH: string; LTC: string }
@@ -172,7 +172,7 @@ function buildStamp() {
 
 function buildInvoiceItems(bodyItems: CartItem[]): InvoiceItem[] {
   return bodyItems.map((i: any) => {
-    if (!i?.slug || typeof i.slug !== 'string') {
+    if (!i?.slug || typeof i.slug !== "string") {
       throw new Error('Invalid item slug')
     }
 
@@ -190,15 +190,29 @@ function buildInvoiceItems(bodyItems: CartItem[]): InvoiceItem[] {
     const weight_g = (p as any).weight_g
     const name_en = (p as any).name_en
     const metal = (p as any).metal
+    const rawStock = (p as any).stock
 
-    if (typeof price_mxn !== 'number')
+    if (typeof price_mxn !== 'number') {
       throw new Error(`Product missing price_mxn: ${p.slug}`)
-    if (typeof weight_g !== 'number')
+    }
+    if (typeof weight_g !== 'number') {
       throw new Error(`Product missing weight_g: ${p.slug}`)
-    if (typeof name_en !== 'string')
+    }
+    if (typeof name_en !== 'string') {
       throw new Error(`Product missing name_en: ${p.slug}`)
-    if (typeof metal !== 'string')
+    }
+    if (typeof metal !== 'string') {
       throw new Error(`Product missing metal: ${p.slug}`)
+    }
+
+    if (typeof rawStock === 'number' && Number.isFinite(rawStock)) {
+      if (rawStock <= 0) {
+        throw new Error(`${name_en} is out of stock`)
+      }
+      if (qty > rawStock) {
+        throw new Error(`Only ${rawStock} available for ${name_en}`)
+      }
+    }
 
     return {
       slug: p.slug,
@@ -214,14 +228,12 @@ function buildInvoiceItems(bodyItems: CartItem[]): InvoiceItem[] {
 }
 
 async function buildCryptoQuote(subtotal_mxn: number): Promise<CryptoQuote | null> {
-  const bufferBps = Number(process.env.CRYPTO_BUFFER_BPS || 100) // 1% default
+  const bufferBps = Number(process.env.CRYPTO_BUFFER_BPS || 100)
   const bufferMult = 1 + bufferBps / 10_000
 
-  // 2 hours default (7200). If you want 24h, set 86400.
   const ttlRaw = Number(process.env.CRYPTO_QUOTE_TTL_SECONDS || 7200)
   const ttlSeconds = Number.isFinite(ttlRaw) && ttlRaw > 0 ? ttlRaw : 7200
 
-  // public addresses are fine as NEXT_PUBLIC_*
   const addrBTC = process.env.NEXT_PUBLIC_BTC_ADDRESS || ''
   const addrETH = process.env.NEXT_PUBLIC_ETH_ADDRESS || ''
   const addrLTC = process.env.NEXT_PUBLIC_LTC_ADDRESS || ''
@@ -243,7 +255,11 @@ async function buildCryptoQuote(subtotal_mxn: number): Promise<CryptoQuote | nul
       expiresAt,
       ttlSeconds,
       bufferBps,
-      rates_mxn_per: { BTC: rates.mxnPerBtc, ETH: rates.mxnPerEth, LTC: rates.mxnPerLtc },
+      rates_mxn_per: {
+        BTC: rates.mxnPerBtc,
+        ETH: rates.mxnPerEth,
+        LTC: rates.mxnPerLtc,
+      },
       addresses: { BTC: addrBTC, ETH: addrETH, LTC: addrLTC },
       due: { BTC: btc, ETH: eth, LTC: ltc },
       uris: {
@@ -266,8 +282,7 @@ function buildOwnerEmailText(args: {
   shipping?: CreateOrderBody['shipping']
   cryptoQuote: CryptoQuote | null
 }) {
-  const { orderId, buildStamp, subtotal_mxn, items, customer, shipping, cryptoQuote } =
-    args
+  const { orderId, buildStamp, subtotal_mxn, items, customer, shipping, cryptoQuote } = args
 
   const lines = items
     .map(
@@ -333,11 +348,19 @@ async function maybeSendOwnerEmail(args: {
     auth: { user, pass },
   })
 
-  await transporter.sendMail({
+  const info = await transporter.sendMail({
     from,
     to: notifyTo,
     subject: `New Cosigo Coin Order: ${args.orderId}`,
     text: buildOwnerEmailText(args),
+  })
+
+  console.log('Owner email sent:', {
+    orderId: args.orderId,
+    messageId: info.messageId,
+    accepted: info.accepted,
+    rejected: info.rejected,
+    response: info.response,
   })
 }
 
@@ -405,7 +428,7 @@ async function maybeSendCustomerEmail(args: {
 
   const orderLink = `https://coins.cosigo.io/order/${args.orderId}`
 
-  await transporter.sendMail({
+  const info = await transporter.sendMail({
     from,
     to,
     subject: `Cosigo Coins — Order ${args.orderId} (awaiting crypto)`,
@@ -423,6 +446,15 @@ async function maybeSendCustomerEmail(args: {
       payText +
       `\nOrder page:\n${orderLink}\n`,
   })
+
+  console.log('Customer email sent:', {
+    orderId: args.orderId,
+    to,
+    messageId: info.messageId,
+    accepted: info.accepted,
+    rejected: info.rejected,
+    response: info.response,
+  })
 }
 
 export async function POST(req: Request) {
@@ -433,59 +465,71 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'No items provided' }, { status: 400 })
     }
 
-    const h = req.headers
+    const xff = req.headers.get('x-forwarded-for') || ''
+    const xri = req.headers.get('x-real-ip') || ''
+    const ip = (xff.split(',')[0] || xri || 'unknown').trim()
 
-// Prefer X-Forwarded-For if behind Caddy / reverse proxy
-const xff = req.headers.get('x-forwarded-for') || ''
-const xri = req.headers.get('x-real-ip') || ''
-const ip = (xff.split(',')[0] || xri || 'unknown').trim()
+    const email = (body.customer?.email || '').trim().toLowerCase()
+    const ipKey = sha256(`ip:${ip}`)
+    const emailKey = email ? sha256(`email:${email}`) : undefined
 
-const email = (body.customer?.email || '').trim().toLowerCase()
-const ipKey = sha256(`ip:${ip}`)
-const emailKey = email ? sha256(`email:${email}`) : undefined
+    const locks = await readLocks()
 
-const locks = await readLocks()
+    const ipLock = locks.ip?.[ipKey]
+    if (isLocked(ipLock)) {
+      return NextResponse.json(
+        { error: 'Too many attempts. Try again later.' },
+        { status: 429 }
+      )
+    }
 
-const ipLock = locks.ip?.[ipKey]
-if (isLocked(ipLock)) {
-  return NextResponse.json({ error: `Too many attempts. Try again later.` }, { status: 429 })
-}
+    if (emailKey) {
+      const emailLock = locks.email?.[emailKey]
+      if (isLocked(emailLock)) {
+        return NextResponse.json(
+          { error: 'Too many attempts for this email. Try again later.' },
+          { status: 429 }
+        )
+      }
+    }
 
-if (emailKey) {
-  const emailLock = locks.email?.[emailKey]
-  if (isLocked(emailLock)) {
-    return NextResponse.json({ error: `Too many attempts for this email. Try again later.` }, { status: 429 })
-  }
-}
+    await appendAttempt({ attemptedAt: nowIso(), ipKey, emailKey })
 
-// record attempt (even if we later reject for other reasons)
-await appendAttempt({ attemptedAt: nowIso(), ipKey, emailKey })
+    const ipCount = await countRecentAttempts({
+      ipKey,
+      windowMs: 30 * 60 * 1000,
+    })
 
-// IP thresholds (30 min window)
-  const ipCount = await countRecentAttempts({ ipKey, windowMs: 30 * 60 * 1000 })
-  if (ipCount >= 20) {
-  const until = new Date(Date.now() + 60 * 60 * 1000).toISOString() // 1 hour
-  locks.ip = locks.ip || {}
-  locks.ip[ipKey] = { until, reason: 'rate-limit-ip' }
-  await writeLocks(locks)
-  return NextResponse.json({ error: 'Too many attempts. Try again later.' }, { status: 429 })
-}
+    if (ipCount >= 20) {
+      const until = new Date(Date.now() + 60 * 60 * 1000).toISOString()
+      locks.ip = locks.ip || {}
+      locks.ip[ipKey] = { until, reason: 'rate-limit-ip' }
+      await writeLocks(locks)
+      return NextResponse.json(
+        { error: 'Too many attempts. Try again later.' },
+        { status: 429 }
+      )
+    }
 
-// Email thresholds (2 hour window)
-if (emailKey) {
-  const emailCount = await countRecentAttempts({ emailKey, windowMs: 2 * 60 * 60 * 1000 })
-  if (emailCount >= 6) {
-    const until = new Date(Date.now() + 2 * 60 * 60 * 1000).toISOString() // 2 hours
-    locks.email = locks.email || {}
-    locks.email[emailKey] = { until, reason: 'rate-limit-email' }
-    await writeLocks(locks)
-    return NextResponse.json({ error: 'Too many attempts for this email. Try again later.' }, { status: 429 })
-  }
-}
+    if (emailKey) {
+      const emailCount = await countRecentAttempts({
+        emailKey,
+        windowMs: 2 * 60 * 60 * 1000,
+      })
 
-    // Trusted server-side catalog lookup (don’t trust client price/name)
+      if (emailCount >= 6) {
+        const until = new Date(Date.now() + 2 * 60 * 60 * 1000).toISOString()
+        locks.email = locks.email || {}
+        locks.email[emailKey] = { until, reason: 'rate-limit-email' }
+        await writeLocks(locks)
+        return NextResponse.json(
+          { error: 'Too many attempts for this email. Try again later.' },
+          { status: 429 }
+        )
+      }
+    }
+
     const items = buildInvoiceItems(body.items)
-
     const subtotal_mxn = items.reduce((sum, it) => sum + it.line_total_mxn, 0)
     const cryptoQuote = await buildCryptoQuote(subtotal_mxn)
 
@@ -509,6 +553,7 @@ if (emailKey) {
 
     const baseDir =
       process.env.ORDER_DATA_DIR || path.join(process.cwd(), 'data', 'orders')
+
     await fs.mkdir(baseDir, { recursive: true })
     await fs.writeFile(
       path.join(baseDir, `${orderId}.json`),
@@ -516,15 +561,19 @@ if (emailKey) {
       'utf8'
     )
 
-    await maybeSendOwnerEmail({
-      orderId,
-      buildStamp: stamp,
-      subtotal_mxn,
-      items,
-      customer: body.customer,
-      shipping: body.shipping,
-      cryptoQuote,
-    })
+    try {
+      await maybeSendOwnerEmail({
+        orderId,
+        buildStamp: stamp,
+        subtotal_mxn,
+        items,
+        customer: body.customer,
+        shipping: body.shipping,
+        cryptoQuote,
+      })
+    } catch (e) {
+      console.error('Owner email failed:', e)
+    }
 
     try {
       await maybeSendCustomerEmail({

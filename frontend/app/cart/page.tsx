@@ -41,7 +41,6 @@ export default function CartPage() {
     <main className="max-w-5xl mx-auto px-6 py-10">
       <h1 className="text-2xl font-semibold mb-8">Your cart</h1>
 
-      {/* Items */}
       <div className="space-y-4">
         {items.map(item => (
           <div
@@ -53,9 +52,7 @@ export default function CartPage() {
               border border-[var(--border-soft)]
             "
           >
-            {/* Left: image + info */}
             <div className="flex items-center gap-4">
-              {/* Thumbnail */}
               <div className="relative w-20 h-20 rounded-xl overflow-hidden bg-black/10 border border-[var(--border-soft)]">
                 {item.images?.obverse ? (
                   <Image
@@ -72,14 +69,16 @@ export default function CartPage() {
                 )}
               </div>
 
-              {/* Info */}
               <div>
                 <p className="font-medium">{item.name_en}</p>
                 <p className="text-xs text-[var(--text-muted)]">
                   {item.weight_g} g · {item.metal}
                 </p>
 
-                {/* Controls */}
+                <p className="text-xs text-[var(--text-muted)] mt-1">
+                  {item.stock === 1 ? 'Only 1 available' : `${item.stock} available`}
+                </p>
+
                 <div className="flex items-center gap-2 mt-2">
                   <button
                     onClick={() => {
@@ -98,7 +97,8 @@ export default function CartPage() {
                       updateQuantity(item.id, item.quantity + 1)
                       refresh()
                     }}
-                    className="px-2 py-1 rounded border border-[var(--border-soft)] text-sm hover:border-white/20"
+                    disabled={item.quantity >= item.stock}
+                    className="px-2 py-1 rounded border border-[var(--border-soft)] text-sm hover:border-white/20 disabled:opacity-40 disabled:cursor-not-allowed"
                   >
                     +
                   </button>
@@ -116,7 +116,6 @@ export default function CartPage() {
               </div>
             </div>
 
-            {/* Right: price */}
             <div className="font-semibold">
               ${(item.price_mxn * item.quantity).toLocaleString()} MXN
             </div>
@@ -124,7 +123,6 @@ export default function CartPage() {
         ))}
       </div>
 
-      {/* Footer */}
       <div className="mt-10 flex flex-col md:flex-row justify-between items-center gap-4">
         <div className="text-lg font-semibold">
           Subtotal: ${subtotal.toLocaleString()} MXN

@@ -35,6 +35,7 @@ export interface Product {
   }
   metal: string
   weight_g: number
+  stock: number
   inStock: boolean
 }
 

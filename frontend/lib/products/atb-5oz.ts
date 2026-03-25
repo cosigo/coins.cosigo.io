@@ -15,6 +15,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -30,6 +31,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -45,6 +47,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -60,6 +63,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -75,6 +79,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -90,6 +95,23 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
+    inStock: true,
+  },
+  {
+    id: '2025-2026-31000-cosigo-token',
+    slug: '2025-2026-31000-cosigo-token',
+    name_en: '31,100 Cosigo Token in your wallet 2026',
+    name_es: '31,100 Cosigo Token in your wallet 2026',
+    category: 'atb-5oz',
+    price_mxn: 1800,
+    images: {
+      obverse: `${ASSET_BASE}/images/one-ounce-rounds/cosigo_master_256_obv.png`,
+      reverse: `${ASSET_BASE}/images/one-ounce-rounds/cosigo_mark_option_x_256.png`,
+    },
+    metal: "silver",
+    weight_g: 31.1000,
+    stock: 10,
     inStock: true,
   },
   {
@@ -105,6 +127,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -120,6 +143,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -135,6 +159,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -150,6 +175,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -165,6 +191,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -180,6 +207,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -195,6 +223,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -210,6 +239,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -225,6 +255,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -240,6 +271,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -255,6 +287,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -270,6 +303,23 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
+    inStock: true,
+  },
+  {
+    id: '2025-2026-15550-cosigo-token',
+    slug: '2025-2026-15550-cosigo-token',
+    name_en: '15,550 Cosigo Token in your wallet 2026',
+    name_es: '15,550 Cosigo Token in your wallet 2026',
+    category: 'atb-5oz',
+    price_mxn: 950,
+    images: {
+      obverse: `${ASSET_BASE}/images/one-ounce-rounds/cosigo_master_256_obv.png`,
+      reverse: `${ASSET_BASE}/images/one-ounce-rounds/cosigo_mark_option_x_256.png`,
+    },
+    metal: "silver",
+    weight_g: 15.550,
+    stock: 10,
     inStock: true,
   },
   {
@@ -285,6 +335,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -300,6 +351,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -315,6 +367,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -330,6 +383,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -345,6 +399,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -360,6 +415,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -375,6 +431,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -390,6 +447,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -405,6 +463,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -420,6 +479,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -435,6 +495,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -450,6 +511,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -465,6 +527,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -480,6 +543,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -495,6 +559,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -510,6 +575,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -525,6 +591,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -540,6 +607,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -555,6 +623,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -570,6 +639,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -585,6 +655,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -600,6 +671,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -615,6 +687,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -630,6 +703,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -645,6 +719,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -660,6 +735,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -675,6 +751,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -690,6 +767,23 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
+    inStock: true,
+  },
+  {
+    id: '2025-2026-7775-cosigo-token',
+    slug: '2025-2026-7775-cosigo-token',
+    name_en: '7,775 Cosigo Token in your wallet 2026',
+    name_es: '7,775 Cosigo Token in your wallet 2026',
+    category: 'atb-5oz',
+    price_mxn: 500,
+    images: {
+      obverse: `${ASSET_BASE}/images/one-ounce-rounds/cosigo_master_256_obv.png`,
+      reverse: `${ASSET_BASE}/images/one-ounce-rounds/cosigo_mark_option_x_256.png`,
+    },
+    metal: "silver",
+    weight_g: 7.750,
+    stock: 10,
     inStock: true,
   },
   {
@@ -705,6 +799,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -720,6 +815,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -735,6 +831,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -750,6 +847,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -765,6 +863,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -780,6 +879,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -795,6 +895,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -810,6 +911,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -825,6 +927,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -840,6 +943,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -855,6 +959,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -870,6 +975,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
   {
@@ -885,6 +991,7 @@ export const atb5oz: Product[] = [
     },
     metal: 'silver',
     weight_g: 155.5,
+    stock: 1,
     inStock: true,
   },
 ];
