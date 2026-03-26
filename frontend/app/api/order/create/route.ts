@@ -70,7 +70,7 @@ async function countRecentAttempts(opts: {
       if (!Number.isFinite(t) || t < cutoff) continue
       if (opts.ipKey && r.ipKey === opts.ipKey) count++
       if (opts.emailKey && r.emailKey === opts.emailKey) count++
-    } catch {}
+    } catch { }
   }
 
   return count
@@ -115,6 +115,11 @@ type CryptoQuote = {
   addresses: { BTC: string; ETH: string; LTC: string }
   due: { BTC: number; ETH: number; LTC: number }
   uris: { BTC: string | null; ETH: string | null; LTC: string | null }
+}
+
+function isMexico(country: string) {
+  const c = String(country || '').trim().toUpperCase()
+  return c === 'MX' || c === 'MEXICO' || c === 'MÉXICO'
 }
 
 function money(n: number) {
@@ -281,12 +286,26 @@ function buildOwnerEmailText(args: {
   orderId: string
   buildStamp: string
   subtotal_mxn: number
+  shipping_mxn: number
+  total_mxn: number
+  shipping_rate_type: 'domestic' | 'international'
   items: InvoiceItem[]
   customer?: CreateOrderBody['customer']
   shipping?: CreateOrderBody['shipping']
   cryptoQuote: CryptoQuote | null
 }) {
-  const { orderId, buildStamp, subtotal_mxn, items, customer, shipping, cryptoQuote } = args
+  const {
+    orderId,
+    buildStamp,
+    subtotal_mxn,
+    shipping_mxn,
+    total_mxn,
+    shipping_rate_type,
+    items,
+    customer,
+    shipping,
+    cryptoQuote,
+  } = args
 
   const lines = items
     .map(
@@ -302,15 +321,17 @@ function buildOwnerEmailText(args: {
 
   const cryptoLines = cryptoQuote?.due
     ? `\n\nCrypto due (buffer ${cryptoQuote.bufferBps} bps):\n` +
-      `BTC: ${cryptoQuote.due.BTC}\n` +
-      `ETH: ${cryptoQuote.due.ETH}\n` +
-      `LTC: ${cryptoQuote.due.LTC}\n`
+    `BTC: ${cryptoQuote.due.BTC}\n` +
+    `ETH: ${cryptoQuote.due.ETH}\n` +
+    `LTC: ${cryptoQuote.due.LTC}\n`
     : ''
 
   return (
     `Order: ${orderId}\n` +
     `Build: ${buildStamp}\n` +
-    `Subtotal: ${money(subtotal_mxn)}\n\n` +
+    `Subtotal: ${money(subtotal_mxn)}\n` +
+    `Shipping (${shipping_rate_type}): ${money(shipping_mxn)}\n` +
+    `Total: ${money(total_mxn)}\n\n` +
     `Items:\n${lines}\n\n` +
     `Customer email: ${cust.email || '(none)'}\n` +
     `Customer name: ${cust.name || '(none)'}\n` +
@@ -331,6 +352,9 @@ async function maybeSendOwnerEmail(args: {
   orderId: string
   buildStamp: string
   subtotal_mxn: number
+  shipping_mxn: number
+  total_mxn: number
+  shipping_rate_type: 'domestic' | 'international'
   items: InvoiceItem[]
   customer?: CreateOrderBody['customer']
   shipping?: CreateOrderBody['shipping']
@@ -371,6 +395,9 @@ async function maybeSendOwnerEmail(args: {
 async function maybeSendCustomerEmail(args: {
   orderId: string
   subtotal_mxn: number
+  shipping_mxn: number
+  total_mxn: number
+  shipping_rate_type: 'domestic' | 'international'
   items: InvoiceItem[]
   customer?: CreateOrderBody['customer']
   shipping?: CreateOrderBody['shipping']
@@ -411,23 +438,23 @@ async function maybeSendCustomerEmail(args: {
 
   const expiresText = q?.expiresAt
     ? new Date(q.expiresAt).toLocaleString('es-MX', {
-        timeZone: 'America/Mexico_City',
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit',
-        hour: '2-digit',
-        minute: '2-digit',
-      })
+      timeZone: 'America/Mexico_City',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+    })
     : null
 
   const lockedLabel = ttlHrs ? `locked quote for ${ttlHrs} hours` : 'locked quote'
 
   const payText = q?.due
     ? `\nCrypto due (${lockedLabel}):\n` +
-      `BTC: ${q.due.BTC}\n` +
-      `ETH: ${q.due.ETH}\n` +
-      `LTC: ${q.due.LTC}\n` +
-      (expiresText ? `Expires: ${expiresText}\n` : '')
+    `BTC: ${q.due.BTC}\n` +
+    `ETH: ${q.due.ETH}\n` +
+    `LTC: ${q.due.LTC}\n` +
+    (expiresText ? `Expires: ${expiresText}\n` : '')
     : `\nCrypto quote unavailable for this order.\n`
 
   const orderLink = `https://coins.cosigo.io/order/${args.orderId}`
@@ -440,7 +467,9 @@ async function maybeSendCustomerEmail(args: {
       `Thanks for your order.\n\n` +
       `Order: ${args.orderId}\n` +
       `Status: awaiting_crypto\n` +
-      `Subtotal: ${money(args.subtotal_mxn)}\n\n` +
+      `Subtotal: ${money(args.subtotal_mxn)}\n` +
+      `Shipping (${args.shipping_rate_type}): ${money(args.shipping_mxn)}\n` +
+      `Total: ${money(args.total_mxn)}\n\n` +
       `Items:\n${lines}\n\n` +
       `Ship to:\n` +
       `${ship.name || ''}\n` +
@@ -535,7 +564,15 @@ export async function POST(req: Request) {
 
     const items = await buildInvoiceItems(body.items)
     const subtotal_mxn = items.reduce((sum, it) => sum + it.line_total_mxn, 0)
-    const cryptoQuote = await buildCryptoQuote(subtotal_mxn)
+
+    const shipping_country = body.shipping?.country || ''
+    const shipping_mxn = isMexico(shipping_country) ? 375 : 825
+    const total_mxn = subtotal_mxn + shipping_mxn
+    const shipping_rate_type = isMexico(shipping_country)
+      ? 'domestic'
+      : 'international'
+
+    const cryptoQuote = await buildCryptoQuote(total_mxn)
 
     const orderId = buildOrderId()
     const stamp = buildStamp()
@@ -546,6 +583,9 @@ export async function POST(req: Request) {
       createdAt: new Date().toISOString(),
       currency: 'MXN' as const,
       subtotal_mxn,
+      shipping_mxn,
+      total_mxn,
+      shipping_rate_type,
       items,
       customer: body.customer || {},
       shipping: body.shipping || {},
@@ -570,6 +610,9 @@ export async function POST(req: Request) {
         orderId,
         buildStamp: stamp,
         subtotal_mxn,
+        shipping_mxn,
+        total_mxn,
+        shipping_rate_type,
         items,
         customer: body.customer,
         shipping: body.shipping,
@@ -580,9 +623,13 @@ export async function POST(req: Request) {
     }
 
     try {
-      await maybeSendCustomerEmail({
+      await maybeSendOwnerEmail({
         orderId,
+        buildStamp: stamp,
         subtotal_mxn,
+        shipping_mxn,
+        total_mxn,
+        shipping_rate_type,
         items,
         customer: body.customer,
         shipping: body.shipping,
