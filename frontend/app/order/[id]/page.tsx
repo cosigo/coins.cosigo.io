@@ -82,8 +82,28 @@ export default async function OrderPage({
           ))}
         </div>
 
-        <div className="font-semibold mb-8">
-          Subtotal: ${(order.subtotal_mxn || order.subtotal || 0).toLocaleString()} MXN
+        <div className="mb-8 rounded-xl border border-white/10 bg-white/[0.03] p-4 space-y-2">
+          <div className="flex items-center justify-between text-sm">
+            <span className="opacity-80">Subtotal</span>
+            <span>${(order.subtotal_mxn || order.subtotal || 0).toLocaleString()} MXN</span>
+          </div>
+
+          <div className="flex items-center justify-between text-sm">
+            <span className="opacity-80">
+              Shipping {order.shipping_rate_type === 'domestic' ? '(Mexico)' : '(International)'}
+            </span>
+            <span>${(order.shipping_mxn || 0).toLocaleString()} MXN</span>
+          </div>
+
+          <div className="border-t border-white/10 pt-2 flex items-center justify-between font-semibold">
+            <span>Total</span>
+            <span>
+              ${(
+                order.total_mxn ||
+                ((order.subtotal_mxn || order.subtotal || 0) + (order.shipping_mxn || 0))
+              ).toLocaleString()} MXN
+            </span>
+          </div>
         </div>
 
         <div className="rounded-2xl border border-white/10 bg-black/10 p-5">
