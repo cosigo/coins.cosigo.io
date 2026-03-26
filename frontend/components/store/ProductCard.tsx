@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Product } from '@/lib/products'
 import { useEffect, useMemo, useState } from 'react'
+import AvailabilityBadge from '@/components/store/AvailabilityBadge'
 
 type Side = 'obverse' | 'reverse'
 
@@ -159,6 +160,10 @@ export default function ProductCard({ product }: { product: Product }) {
           <p className="mt-1 text-xs text-[var(--text-muted)]">
             {product.weight_g} g · {product.metal}
           </p>
+
+          <div className="mt-1">
+            <AvailabilityBadge slug={product.slug} fallback={product.stock} />
+          </div>
 
           <p className="mt-3 text-sm font-semibold">
             ${product.price_mxn.toLocaleString()} MXN
