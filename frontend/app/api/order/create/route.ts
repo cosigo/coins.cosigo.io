@@ -566,7 +566,7 @@ export async function POST(req: Request) {
     const subtotal_mxn = items.reduce((sum, it) => sum + it.line_total_mxn, 0)
 
     const shipping_country = body.shipping?.country || ''
-    const shipping_mxn = isMexico(shipping_country) ? 375 : 825
+    const shipping_mxn = isMexico(shipping_country) ? 400 : 800
     const total_mxn = subtotal_mxn + shipping_mxn
     const shipping_rate_type = isMexico(shipping_country)
       ? 'domestic'
