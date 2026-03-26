@@ -5,6 +5,7 @@ import crypto from 'crypto'
 import nodemailer from 'nodemailer'
 import type { CartItem } from '@/lib/cart'
 import { findProductBySlug } from '@/lib/products/catalog'
+import { getAvailableStockForSlug } from '@/lib/inventory'
 
 const ABUSE_DIR = process.env.ABUSE_DATA_DIR || '/srv/data/abuse'
 const LOCKS_FILE = path.join(ABUSE_DIR, 'locks.json')
@@ -170,61 +171,64 @@ function buildStamp() {
     .toString('hex')}`
 }
 
-function buildInvoiceItems(bodyItems: CartItem[]): InvoiceItem[] {
-  return bodyItems.map((i: any) => {
-    if (!i?.slug || typeof i.slug !== "string") {
-      throw new Error('Invalid item slug')
-    }
-
-    const qty = Number(i.quantity || 0)
-    if (!Number.isFinite(qty) || qty <= 0) {
-      throw new Error(`Invalid quantity for ${i.slug}`)
-    }
-
-    const p = findProductBySlug(i.slug)
-    if (!p) {
-      throw new Error(`Unknown product slug: ${i.slug}`)
-    }
-
-    const price_mxn = (p as any).price_mxn
-    const weight_g = (p as any).weight_g
-    const name_en = (p as any).name_en
-    const metal = (p as any).metal
-    const rawStock = (p as any).stock
-
-    if (typeof price_mxn !== 'number') {
-      throw new Error(`Product missing price_mxn: ${p.slug}`)
-    }
-    if (typeof weight_g !== 'number') {
-      throw new Error(`Product missing weight_g: ${p.slug}`)
-    }
-    if (typeof name_en !== 'string') {
-      throw new Error(`Product missing name_en: ${p.slug}`)
-    }
-    if (typeof metal !== 'string') {
-      throw new Error(`Product missing metal: ${p.slug}`)
-    }
-
-    if (typeof rawStock === 'number' && Number.isFinite(rawStock)) {
-      if (rawStock <= 0) {
-        throw new Error(`${name_en} is out of stock`)
+async function buildInvoiceItems(bodyItems: CartItem[]): Promise<InvoiceItem[]> {
+  return Promise.all(
+    bodyItems.map(async (i: any) => {
+      if (!i?.slug || typeof i.slug !== 'string') {
+        throw new Error('Invalid item slug')
       }
-      if (qty > rawStock) {
-        throw new Error(`Only ${rawStock} available for ${name_en}`)
-      }
-    }
 
-    return {
-      slug: p.slug,
-      name_en,
-      name_es: (p as any).name_es as string | undefined,
-      metal,
-      weight_g,
-      price_mxn,
-      quantity: qty,
-      line_total_mxn: price_mxn * qty,
-    }
-  })
+      const qty = Number(i.quantity || 0)
+      if (!Number.isFinite(qty) || qty <= 0) {
+        throw new Error(`Invalid quantity for ${i.slug}`)
+      }
+
+      const p = findProductBySlug(i.slug)
+      if (!p) {
+        throw new Error(`Unknown product slug: ${i.slug}`)
+      }
+
+      const price_mxn = (p as any).price_mxn
+      const weight_g = (p as any).weight_g
+      const name_en = (p as any).name_en
+      const metal = (p as any).metal
+
+      if (typeof price_mxn !== 'number') {
+        throw new Error(`Product missing price_mxn: ${p.slug}`)
+      }
+      if (typeof weight_g !== 'number') {
+        throw new Error(`Product missing weight_g: ${p.slug}`)
+      }
+      if (typeof name_en !== 'string') {
+        throw new Error(`Product missing name_en: ${p.slug}`)
+      }
+      if (typeof metal !== 'string') {
+        throw new Error(`Product missing metal: ${p.slug}`)
+      }
+
+      const available = await getAvailableStockForSlug(p.slug)
+
+      if (available !== null) {
+        if (available <= 0) {
+          throw new Error(`${name_en} is out of stock`)
+        }
+        if (qty > available) {
+          throw new Error(`Only ${available} available for ${name_en}`)
+        }
+      }
+
+      return {
+        slug: p.slug,
+        name_en,
+        name_es: (p as any).name_es as string | undefined,
+        metal,
+        weight_g,
+        price_mxn,
+        quantity: qty,
+        line_total_mxn: price_mxn * qty,
+      }
+    })
+  )
 }
 
 async function buildCryptoQuote(subtotal_mxn: number): Promise<CryptoQuote | null> {
@@ -529,7 +533,7 @@ export async function POST(req: Request) {
       }
     }
 
-    const items = buildInvoiceItems(body.items)
+    const items = await buildInvoiceItems(body.items)
     const subtotal_mxn = items.reduce((sum, it) => sum + it.line_total_mxn, 0)
     const cryptoQuote = await buildCryptoQuote(subtotal_mxn)
 
