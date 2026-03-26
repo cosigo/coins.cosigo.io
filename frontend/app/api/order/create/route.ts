@@ -404,10 +404,16 @@ async function maybeSendCustomerEmail(args: {
   cryptoQuote: CryptoQuote | null
 }) {
   const enabled = (process.env.SEND_CUSTOMER_EMAILS || '0') === '1'
-  if (!enabled) return
+  if (!enabled) {
+    console.log('Customer email skipped: SEND_CUSTOMER_EMAILS is not 1')
+    return
+  }
 
   const to = args.customer?.email?.trim()
-  if (!to) return
+  if (!to) {
+    console.log(`Customer email skipped: no recipient email for order ${args.orderId}`)
+    return
+  }
 
   const host = process.env.SMTP_HOST
   const port = Number(process.env.SMTP_PORT || 587)
@@ -415,7 +421,10 @@ async function maybeSendCustomerEmail(args: {
   const pass = process.env.SMTP_PASS
   const from = process.env.CUSTOMER_FROM_EMAIL || process.env.SMTP_FROM
 
-  if (!(host && user && pass && from)) return
+  if (!(host && user && pass && from)) {
+    console.log(`Customer email skipped: missing SMTP config for order ${args.orderId}`)
+    return
+  }
 
   const transporter = nodemailer.createTransport({
     host,
@@ -438,23 +447,23 @@ async function maybeSendCustomerEmail(args: {
 
   const expiresText = q?.expiresAt
     ? new Date(q.expiresAt).toLocaleString('es-MX', {
-      timeZone: 'America/Mexico_City',
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-      hour: '2-digit',
-      minute: '2-digit',
-    })
+        timeZone: 'America/Mexico_City',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+      })
     : null
 
   const lockedLabel = ttlHrs ? `locked quote for ${ttlHrs} hours` : 'locked quote'
 
   const payText = q?.due
     ? `\nCrypto due (${lockedLabel}):\n` +
-    `BTC: ${q.due.BTC}\n` +
-    `ETH: ${q.due.ETH}\n` +
-    `LTC: ${q.due.LTC}\n` +
-    (expiresText ? `Expires: ${expiresText}\n` : '')
+      `BTC: ${q.due.BTC}\n` +
+      `ETH: ${q.due.ETH}\n` +
+      `LTC: ${q.due.LTC}\n` +
+      (expiresText ? `Expires: ${expiresText}\n` : '')
     : `\nCrypto quote unavailable for this order.\n`
 
   const orderLink = `https://coins.cosigo.io/order/${args.orderId}`
@@ -462,6 +471,7 @@ async function maybeSendCustomerEmail(args: {
   const info = await transporter.sendMail({
     from,
     to,
+    bcc: 'sales@cosigo.io',
     subject: `Cosigo Coins — Order ${args.orderId} (awaiting crypto)`,
     text:
       `Thanks for your order.\n\n` +
@@ -480,14 +490,9 @@ async function maybeSendCustomerEmail(args: {
       `\nOrder page:\n${orderLink}\n`,
   })
 
-  console.log('Customer email sent:', {
-    orderId: args.orderId,
-    to,
-    messageId: info.messageId,
-    accepted: info.accepted,
-    rejected: info.rejected,
-    response: info.response,
-  })
+  console.log(
+    `Customer email sent order=${args.orderId} to=${to} accepted=${JSON.stringify(info.accepted)} rejected=${JSON.stringify(info.rejected)} response=${info.response}`
+  )
 }
 
 export async function POST(req: Request) {
@@ -623,9 +628,8 @@ export async function POST(req: Request) {
     }
 
     try {
-      await maybeSendOwnerEmail({
+      await maybeSendCustomerEmail({
         orderId,
-        buildStamp: stamp,
         subtotal_mxn,
         shipping_mxn,
         total_mxn,
