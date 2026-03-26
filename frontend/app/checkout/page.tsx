@@ -5,6 +5,14 @@ import { CartItem, getCart, clearCart } from '@/lib/cart'
 import Link from 'next/link'
 import CryptoEstimate from '@/components/store/CryptoEstimate'
 
+const DOMESTIC_SHIPPING_MXN = 400
+const INTERNATIONAL_SHIPPING_MXN = 800
+
+function isMexico(country: string) {
+  const c = String(country || '').trim().toUpperCase()
+  return c === 'MX' || c === 'MEXICO' || c === 'MÉXICO'
+}
+
 export default function CheckoutPage() {
   const [items, setItems] = useState<CartItem[]>([])
   const [paymentMethod, setPaymentMethod] = useState<
@@ -45,6 +53,14 @@ export default function CheckoutPage() {
     0
   )
 
+  const shippingMxn = !shipping.country.trim()
+    ? 0
+    : isMexico(shipping.country)
+      ? DOMESTIC_SHIPPING_MXN
+      : INTERNATIONAL_SHIPPING_MXN
+
+  const totalMxn = subtotal + shippingMxn
+
   async function startMercadoPagoCheckout() {
     const cart = items.map((item) => ({
       slug: item.id,
@@ -65,52 +81,52 @@ export default function CheckoutPage() {
   }
 
   async function createCryptoInvoice() {
-  // validate ONLY when clicking the button
-  if (!customer.email) {
-    alert('Email is required')
-    return
+    // validate ONLY when clicking the button
+    if (!customer.email) {
+      alert('Email is required')
+      return
+    }
+
+    if (!shipping.name || !shipping.line1 || !shipping.city || !shipping.country) {
+      alert('Shipping address is incomplete')
+      return
+    }
+
+    const payload = {
+      items: items.map((it) => ({
+        slug: it.id, // id === slug
+        quantity: it.quantity,
+      })),
+      customer: {
+        email: customer.email,
+        name: shipping.name || customer.name,
+        phone: customer.phone,
+      },
+      shipping,
+      notes: 'checkout:crypto',
+    }
+
+    const res = await fetch('/api/order/create', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    })
+
+    const data = await res.json()
+
+    if (data?.ok) {
+      const id = data.orderId || data.id || data.order?.id
+      if (!id) {
+        alert('Order created but response did not include an order id')
+        return
+      }
+      clearCart()
+      window.location.href = `/order/${id}`
+      return
+    }
+
+    alert(data?.error || 'Unable to create crypto invoice')
   }
-
-  if (!shipping.name || !shipping.line1 || !shipping.city || !shipping.country) {
-    alert('Shipping address is incomplete')
-    return
-  }
-
-  const payload = {
-    items: items.map((it) => ({
-      slug: it.id, // id === slug
-      quantity: it.quantity,
-    })),
-    customer: {
-      email: customer.email,
-      name: shipping.name || customer.name,
-      phone: customer.phone,
-    },
-    shipping,
-    notes: 'checkout:crypto',
-  }
-
-  const res = await fetch('/api/order/create', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload),
-  })
-
-  const data = await res.json()
-
-  if (data?.ok) {
-  const id = data.orderId || data.id || data.order?.id
-  if (!id) {
-    alert('Order created but response did not include an order id')
-    return
-  }
-  clearCart()
-  window.location.href = `/order/${id}`
-  return
-}
-
-  alert(data?.error || 'Unable to create crypto invoice')
-}
 
   if (items.length === 0) {
     return (
@@ -189,6 +205,14 @@ export default function CheckoutPage() {
               value={shipping.country}
               onChange={(e) => setShipping((v) => ({ ...v, country: e.target.value }))}
             />
+
+            <p className="text-sm text-gray-600">
+              {!shipping.country.trim()
+                ? 'Enter country to calculate shipping.'
+                : isMexico(shipping.country)
+                  ? `Shipping: $${DOMESTIC_SHIPPING_MXN.toLocaleString()} MXN (Mexico)`
+                  : `Shipping: $${INTERNATIONAL_SHIPPING_MXN.toLocaleString()} MXN (International)`}
+            </p>
           </div>
         </section>
 
@@ -313,12 +337,34 @@ export default function CheckoutPage() {
           ))}
         </div>
 
-        <div className="border-t pt-4 flex justify-between font-semibold">
-          <span>Subtotal</span>
-          <span>${subtotal.toLocaleString()} MXN</span>
+        <div className="border-t pt-4 space-y-2">
+          <div className="flex justify-between text-sm">
+            <span>Subtotal</span>
+            <span>${subtotal.toLocaleString()} MXN</span>
+          </div>
+
+          <div className="flex justify-between text-sm">
+            <span>
+              {!shipping.country.trim()
+                ? 'Shipping'
+                : isMexico(shipping.country)
+                  ? 'Shipping (Mexico)'
+                  : 'Shipping (International)'}
+            </span>
+            <span>
+              {!shipping.country.trim()
+                ? 'Enter country'
+                : `$${shippingMxn.toLocaleString()} MXN`}
+            </span>
+          </div>
+
+          <div className="border-t pt-2 flex justify-between font-semibold">
+            <span>Total</span>
+            <span>${totalMxn.toLocaleString()} MXN</span>
+          </div>
         </div>
 
-        {paymentMethod === 'crypto' && <CryptoEstimate subtotalMxn={subtotal} />}
+        {paymentMethod === 'crypto' && <CryptoEstimate subtotalMxn={totalMxn} />}
 
         {paymentMethod === 'stripe' && (
           <button
