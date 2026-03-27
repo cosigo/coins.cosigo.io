@@ -97,5 +97,36 @@ export const oneOunceRounds: Product[] = [
     stock: 7,
     inStock: true,
   },
-
+  {
+    id: '1984-1oz-silver-liberty-bell-BU',
+    slug: '1984-1oz-silver-liberty-bell-BU',
+    name_en: '1984 1oz Silver Liberty Bell (BU)',
+    name_es: '1984 1oz Silver Liberty Bell (BU)',
+    category: 'one-ounce-rounds',
+    price_mxn: 2450,
+    images: {
+      obverse: `${ASSET_BASE}/images/one-ounce-rounds/liberty_silver_1984_obv.jpg`,
+      reverse: `${ASSET_BASE}/images/one-ounce-rounds/liberty_silver_1984_rev.jpg`,
+    },
+    metal: "silver",
+    weight_g: 31.1035,
+    stock: 4,
+    inStock: true,
+  },
+  {
+    id: '2017-1oz-silver-zombucks-radioactive-BU',
+    slug: '2017-1oz-silver-zombucks-radioactive-BU',
+    name_en: '2017 1oz Silver Radioactive Zombucks Walker (BU)',
+    name_es: '2017 1oz Silver Radioactive Zombucks Walker (BU)',
+    category: 'one-ounce-rounds',
+    price_mxn: 3350,
+    images: {
+      obverse: `${ASSET_BASE}/images/one-ounce-rounds/zombucks_obv.JPG`,
+      reverse: `${ASSET_BASE}/images/one-ounce-rounds/zombucks_rev.JPG`,
+    },
+    metal: "silver",
+    weight_g: 31.1035,
+    stock: 1,
+    inStock: true,
+  },
 ]
