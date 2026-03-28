@@ -47,23 +47,7 @@ export const peaceDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
-    stock: 1,
-    inStock: true,
-  },
-  {
-    id: 'peace-dollar-1922-p-au',
-    slug: 'peace-dollar-1922-p-au',
-    name_en: 'Peace Dollar — 1922 P (AU)',
-    name_es: 'Peace Dollar — 1922 P (AU)',
-    category: 'peace-dollars',
-    price_mxn: 2450,
-    images: {
-      obverse: `${ASSET_BASE}/images/peace-dollars/1922/peace_1922_p_ms+_frosty_bbc_obv.jpg`,
-      reverse: `${ASSET_BASE}/images/peace-dollars/1922/peace_1922_p_ms+_frosty_bbc_rev.jpg`,
-    },
-    metal: 'silver',
-    weight_g: 26.73,
-    stock: 1,
+    stock: 2,
     inStock: true,
   },
   {
@@ -79,7 +63,7 @@ export const peaceDollars: Product[] = [
     },
     metal: 'silver',
     weight_g: 26.73,
-    stock: 1,
+    stock: 2,
     inStock: true,
   },
 ]
