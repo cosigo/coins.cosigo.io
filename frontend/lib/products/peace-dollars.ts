@@ -1,6 +1,10 @@
 import type { Product } from './types'
 import { ASSET_BASE } from './types'
 
+export const metadata = {
+  title: 'Peace Dollar Silver Coins 1921 to 1934 BU AU XF Condition'
+}
+
 export const peaceDollars: Product[] = [
   {
     id: 'peace-1921-p-high-relief-au',

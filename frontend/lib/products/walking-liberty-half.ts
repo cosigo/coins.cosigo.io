@@ -1,5 +1,9 @@
 import { Product, ASSET_BASE } from "./types"
 
+export const metadata = {
+  title: 'Walking Liberty Half Dollars World War II Era Silver Coins'
+}
+
 export const walkinglibertyHalf: Product[] = [
   {
     id: "silver-half-dollars",

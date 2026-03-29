@@ -7,6 +7,10 @@ import { walkingLiberty } from "./walking-liberty-dollar"
 import { walkinglibertyHalf } from "./walking-liberty-half"
 import { franklinHalf } from "./franklin-half"
 
+export const metadata = {
+  title: 'Silver Coin Variety and Selection'
+}
+
 import { validateProducts } from "./validate"
 
 const merged: Product[] = [

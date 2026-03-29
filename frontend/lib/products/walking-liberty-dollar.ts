@@ -1,5 +1,9 @@
 import { Product, ASSET_BASE } from "./types"
 
+export const metadata = {
+  title: 'One Troy Ounce Walking Liberty Silver Dollars US Mint 1986 to 2020'
+}
+
 export const walkingLiberty: Product[] = [
   {
     id: "silver-rounds_1oz",

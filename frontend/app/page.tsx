@@ -3,6 +3,10 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { getCategories } from '@/lib/categories'
 
+export const metadata = {
+  title: 'Home page'
+}
+
 export default function HomePage() {
   const categories = getCategories()
 

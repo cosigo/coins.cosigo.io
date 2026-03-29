@@ -1,6 +1,10 @@
 import type { Product } from './types'
 import { ASSET_BASE } from './types'
 
+export const metadata = {
+  title: 'Morgan Silver Dollar Coins BU AU XF VF Condition 1878 to 1904 and 1921'
+}
+
 export const morganDollars: Product[] = [
   {
     id: 'morgan-1878-s-bu-001',

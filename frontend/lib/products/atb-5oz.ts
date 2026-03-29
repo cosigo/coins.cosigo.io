@@ -1,6 +1,10 @@
 import type { Product } from "./types"
 import { ASSET_BASE } from "../../config/assets"
 
+export const metadata = {
+  title: 'ATB America The Beautiful 5 Ounce Coins'
+}
+
 export const atb5oz: Product[] = [
   {
     id: 'atb-5oz-grand-canyon-2010',

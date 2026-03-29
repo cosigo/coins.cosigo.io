@@ -3,6 +3,10 @@ import { products, ProductCategory } from '@/lib/products'
 import { notFound } from 'next/navigation'
 import ProductGrid from '@/components/store/ProductGrid'
 
+export const metadata = {
+  title: 'Category'
+}
+
 export default async function CategoryPage({
   params,
 }: {

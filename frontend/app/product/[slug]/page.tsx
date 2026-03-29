@@ -3,6 +3,10 @@ import { notFound } from 'next/navigation'
 import AddToCartButton from './AddToCartButton'
 import ProductImageViewer from './ProductImageViewer'
 
+export const metadata = {
+  title: 'Product Page'
+}
+
 export default async function ProductPage({
   params,
 }: {

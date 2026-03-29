@@ -1,5 +1,9 @@
 import { Product, ASSET_BASE } from './types'
 
+export const metadata = {
+  title: 'Silver Coins One Troy Ounce Rounds BU Proof'
+}
+
 export const oneOunceRounds: Product[] = [
   {
     id: '2017-2oz-silver-st-gaudens-BU',

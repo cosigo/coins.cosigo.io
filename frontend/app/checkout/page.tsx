@@ -5,6 +5,10 @@ import { CartItem, getCart, clearCart } from '@/lib/cart'
 import Link from 'next/link'
 import CryptoEstimate from '@/components/store/CryptoEstimate'
 
+export const metadata = {
+  title: 'Checkout'
+}
+
 const DOMESTIC_SHIPPING_MXN = 400
 const INTERNATIONAL_SHIPPING_MXN = 800
 

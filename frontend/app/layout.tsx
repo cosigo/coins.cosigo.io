@@ -2,6 +2,11 @@ import './globals.css'
 import Header from '../components/layout/Header'
 
 export const metadata = {
+  title: {
+    default: 'COSIGO Coins | Silver Anchored Coins, Exchange, and Reference',
+    template: '%s | COSIGO Coins',
+  },
+
   icons: {
     icon: [
       { url: '/favicon.ico' },

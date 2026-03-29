@@ -5,6 +5,10 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import QRCode from 'qrcode'
 
+export const metadata = {
+  title: 'Order Page'
+}
+
 export default async function OrderPage({
   params,
 }: {

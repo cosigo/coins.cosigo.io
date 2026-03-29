@@ -1,6 +1,10 @@
 import type { Product } from './types'
 import { ASSET_BASE } from './types'
 
+export const metadata = {
+  title: 'Franklin 50 Cent Silver Half Dollar Coins'
+}
+
 export const franklinHalf: Product[] = [
 
     {
