@@ -11,10 +11,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 import CryptoEstimate from '@/components/store/CryptoEstimate'
 
-export const metadata = {
-  title: 'Cart'
-}
-
 type AvailabilityMap = Record<string, number>
 
 async function fetchAvailabilityMap(items: CartItem[]): Promise<AvailabilityMap> {
