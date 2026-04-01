@@ -158,7 +158,7 @@ export default function CheckoutPage() {
             />
             <input
               className="border p-2 rounded"
-              placeholder="Phone (optional)"
+              placeholder="Phone (recommended)"
               value={customer.phone}
               onChange={(e) => setCustomer((v) => ({ ...v, phone: e.target.value }))}
             />
@@ -201,7 +201,7 @@ export default function CheckoutPage() {
             />
             <input
               className="border p-2 rounded"
-              placeholder="Country"
+              placeholder="Country (Mexico or Unites States)"
               value={shipping.country}
               onChange={(e) => setShipping((v) => ({ ...v, country: e.target.value }))}
             />
